@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARIVIA</title>
+    <!-- Подключаем шрифт Open Sans Regular -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Чтобы паддинги не увеличивали размер элементов */
+        }
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden; /* Убираем прокрутку */
+        }
+        .container {
+            width: 100 %;
+            padding: 0 20 px; /* Ваши "пендинги" (отступы) слева и справа */
+            text-align: center;
+        }
+        h1 {
+            /* 
+               Расчет размера: 100vw — вся ширина экрана. 
+               Вычитаем 40px (отступы 20px + 20px). 
+               Делим на количество символов (примерно 7), чтобы текст не вылезал.
+            */
+            font-size: calc ((100 vw - 40 px) / 5.5); 
+            line-height: 1;
+            color: #333;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DARIVIA</h1>
+    </div>
+</body>
+</html>
