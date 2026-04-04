@@ -1,55 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DARIVIA</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARIVIA</title>
 
-        html, body {
-            height: 100 vh;
-            width: 100 vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            overflow: hidden;
-            font-family: 'Open Sans', sans-serif;
-        }
+  <!-- Open Sans Regular -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 
-        .container {
-            width: 100 %;
-            /* Отступы по бокам (пендинги) */
-            padding: 0 5 vw; 
-            text-align: center;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            /* 
-               Уменьшаем делитель до 4.3 для максимального размера.
-               10vw — это суммарные отступы (5vw + 5vw).
-            */
-            font-size: calc ((100 vw - 10 vw) / 4.3); 
-            line-height: 0.8; /* Поджимаем межстрочный интервал для плотности */
-            color: #000;
-            text-transform: uppercase;
-            font-weight: 700; /* Сделаем чуть жирнее, чтобы выглядело солиднее */
-            white-space: nowrap;
-            letter-spacing: -0.02 em; /* Немного сближаем буквы для эффекта логотипа */
-        }
-    </style>
+    body {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 5vw;
+      overflow: hidden;
+    }
 
+    .title {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1;
+
+      font-size: clamp(40px, 12vw, 200px);
+      width: 100%;
+
+      /* стартовое состояние */
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      filter: blur(8px);
+
+      /* анимация */
+      animation: luxuryReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes luxuryReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+        filter: blur(8px);
+      }
+      60% {
+        opacity: 0.7;
+        transform: translateY(5px) scale(1.01);
+        filter: blur(2px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    /* лёгкий финальный "дыхательный" микромоушн */
+    .title::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      animation: subtleBreath 4s ease-in-out infinite;
+    }
+
+    @keyframes subtleBreath {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.002); }
+    }
+
+    /* уменьшение анимаций для accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .title {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>DARIVIA</h1>
-    </div>
+  <div class="title">DARIVIA</div>
 </body>
 </html>
-
