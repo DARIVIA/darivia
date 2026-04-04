@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DARIVIA</title>
-    <!-- Подключаем шрифт Open Sans Regular -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
+        /* Убираем все лишние отступы и фиксируем высоту */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Чтобы паддинги не увеличивали размер элементов */
+            box-sizing: border-box;
         }
-        body, html {
-            height: 100%;
+
+        html, body {
+            height: 100 vh; /* Высота на весь экран */
+            width: 100 vw;
+            overflow: hidden; /* Запрещаем прокрутку */
+            background-color: #ffffff;
+        }
+
+        body {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
+            justify-content: center; /* Центровка по горизонтали */
+            align-items: center;     /* Центровка по вертикали */
             font-family: 'Open Sans', sans-serif;
-            overflow: hidden; /* Убираем прокрутку */
         }
+
         .container {
-            width: 100%;
-            padding: 0 20 px; /* Ваши "пендинги" (отступы) слева и справа */
+            width: 100 %;
+            padding: 0 40 px; /* Ваши пендинги (отступы) */
             text-align: center;
         }
+
         h1 {
             /* 
-               Расчет размера: 100vw — вся ширина экрана. 
-               Вычитаем 40px (отступы 20px + 20px). 
-               Делим на количество символов (примерно 7), чтобы текст не вылезал.
+               Формула: 100vw (ширина) минус 80px (отступы 40+40). 
+               Делим на коэффициент 4.8, чтобы 7 букв "DARIVIA" вписались в строку.
             */
-            font-size: calc ((100 vw - 40 px) / 5.5); 
+            font-size: calc ((100 vw - 80 px) / 4.8); 
             line-height: 1;
-            color: #333;
+            color: #000;
             text-transform: uppercase;
+            font-weight: 400; /* Regular */
+            white-space: nowrap; /* Запрет переноса на новую строку */
         }
     </style>
 </head>
@@ -45,3 +53,4 @@
     </div>
 </body>
 </html>
+
