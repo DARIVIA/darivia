@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DARIVIA</title>
     <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        /* Убираем все лишние отступы и фиксируем высоту */
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -14,38 +13,38 @@
         }
 
         html, body {
-            height: 100 vh; /* Высота на весь экран */
+            height: 100 vh;
             width: 100 vw;
-            overflow: hidden; /* Запрещаем прокрутку */
-            background-color: #ffffff;
-        }
-
-        body {
             display: flex;
-            justify-content: center; /* Центровка по горизонтали */
-            align-items: center;     /* Центровка по вертикали */
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            overflow: hidden;
             font-family: 'Open Sans', sans-serif;
         }
 
         .container {
             width: 100 %;
-            padding: 0 40 px; /* Ваши пендинги (отступы) */
+            /* Отступы по бокам (пендинги) */
+            padding: 0 5 vw; 
             text-align: center;
         }
 
         h1 {
             /* 
-               Формула: 100vw (ширина) минус 80px (отступы 40+40). 
-               Делим на коэффициент 4.8, чтобы 7 букв "DARIVIA" вписались в строку.
+               Уменьшаем делитель до 4.3 для максимального размера.
+               10vw — это суммарные отступы (5vw + 5vw).
             */
-            font-size: calc ((100 vw - 80 px) / 4.8); 
-            line-height: 1;
+            font-size: calc ((100 vw - 10 vw) / 4.3); 
+            line-height: 0.8; /* Поджимаем межстрочный интервал для плотности */
             color: #000;
             text-transform: uppercase;
-            font-weight: 400; /* Regular */
-            white-space: nowrap; /* Запрет переноса на новую строку */
+            font-weight: 700; /* Сделаем чуть жирнее, чтобы выглядело солиднее */
+            white-space: nowrap;
+            letter-spacing: -0.02 em; /* Немного сближаем буквы для эффекта логотипа */
         }
     </style>
+
 </head>
 <body>
     <div class="container">
