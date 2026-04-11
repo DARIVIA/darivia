@@ -1,94 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DARIVIA</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Open Sans Regular -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+<title>DARIVIA — Decision Trajectory Intelligence</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    body {
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 5vw;
-      overflow: hidden;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .title {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 400;
-      color: #1a1a1a;
-      text-align: center;
-      line-height: 1;
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #111;
+  line-height: 1.6;
+}
 
-      font-size: clamp(60px, 18vw, 600px);
-      width: 100%;
+/* HEADER ANIMATION */
+.header {
+  width: 100 %;
+  text-align: center;
+  padding: 40 px 20 px 0;
+  font-size: clamp (28 px, 6 vw, 72 px);
+  letter-spacing: 0.2 em;
+  font-weight: 300;
+}
 
-      /* стартовое состояние */
-      opacity: 0;
-      transform: translateY(20px) scale(0.98);
-      filter: blur(8px);
+#brand {
+  transition: all 1.2s ease;
+}
 
-      /* анимация */
-      animation: luxuryReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      animation-delay: 0.3s;
-    }
+.container {
+  max-width: 900 px;
+  margin: 0 auto;
+  padding: 80 px 20 px;
+}
 
-    @keyframes luxuryReveal {
-      0% {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-        filter: blur(8px);
-      }
-      60% {
-        opacity: 0.7;
-        transform: translateY(5px) scale(1.01);
-        filter: blur(2px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
+section {
+  margin-bottom: 80 px;
+  opacity: 0;
+  transform: translateY (20 px);
+  transition: all 0.8s ease;
+}
 
-    /* лёгкий финальный "дыхательный" микромоушн */
-    .title::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 0;
-      animation: subtleBreath 4s ease-in-out infinite;
-    }
+section.visible {
+  opacity: 1;
+  transform: translateY (0);
+}
 
-    @keyframes subtleBreath {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.002); }
-    }
+h1 {
+  font-size: clamp (36 px, 6 vw, 64 px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02 em;
+}
 
-    /* уменьшение анимаций для accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      .title {
-        animation: none;
-        opacity: 1;
-        transform: none;
-        filter: none;
-      }
-    }
-  </style>
+h2 {
+  font-size: 22 px;
+  font-weight: 500;
+  margin-bottom: 20 px;
+}
+
+p {
+  font-size: 18 px;
+  color: #333;
+  margin-bottom: 12 px;
+}
+
+.block-quote {
+  font-size: 22 px;
+  line-height: 1.4;
+  margin: 20 px 0;
+}
+
+.highlight {
+  font-weight: 500;
+  color: #000;
+}
+
+.divider {
+  height: 1 px;
+  background: #eee;
+  margin: 60 px 0;
+}
+
+.list p {
+  color: #444;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 40 px;
+}
+
+.cta a {
+  display: inline-block;
+  padding: 14 px 28 px;
+  border: 1 px solid #000;
+  text-decoration: none;
+  color: #000;
+  margin: 6 px;
+  transition: all 0.25 s ease;
+}
+
+.cta a:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 600 px) {
+  .container {
+    padding: 60 px 16 px;
+  }
+
+  p {
+    font-size: 16 px;
+  }
+
+  .block-quote {
+    font-size: 18 px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <div class="title">DARIVIA</div>
+
+<!-- HEADER -->
+<div class="header">
+  <span id="brand">DARIVIA</span>
+</div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section>
+    <h1>
+      People don’t shop for clothes.<br>
+      They decide what to wear.
+    </h1>
+    <p>
+      Fashion is built around products.<br>
+      Not decisions.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROBLEM -->
+  <section>
+    <h2>Problem</h2>
+    <p>Brands optimize products.</p>
+    <p>But decisions happen before products are evaluated.</p>
+
+    <div class="list">
+      <p><b>What brands see:</b></p>
+      <p>— clicks</p>
+      <p>— fittings</p>
+      <p>— purchases</p>
+    </div>
+
+    <div class="list">
+      <p><b>What they don’t see:</b></p>
+      <p>— hesitation</p>
+      <p>— reasoning</p>
+      <p>— rejection</p>
+    </div>
+
+    <p class="highlight">The most valuable data is missing.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CATEGORY -->
+  <section>
+    <h2>Category</h2>
+    <p class="block-quote">
+      Decision Trajectory Intelligence (DTI)
+    </p>
+    <p>A new data layer for fashion.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT WE DO -->
+  <section>
+    <h2>What we do</h2>
+    <p>
+      DARIVIA captures decisions as they happen<br>
+      and transforms them into structured intelligence.
+    </p>
+    <div class="list">
+      <p>→ a decision</p>
+      <p>→ a trajectory</p>
+      <p>→ actionable data</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VALUE -->
+  <section>
+    <h2>Value</h2>
+    <p class="block-quote">
+      For the first time,<br>
+      brands don’t just see what was chosen.
+    </p>
+    <p class="block-quote highlight">
+      They see what failed — and why.
+    </p>
+    <div class="list">
+      <p>— better product decisions</p>
+      <p>— real demand understanding</p>
+      <p>— reduced uncertainty</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- DATA MOAT -->
+  <section>
+    <h2>Data moat</h2>
+    <p>Decisions are ephemeral.</p>
+    <p>They exist only in the moment.</p>
+    <p>If not captured — they are lost forever.</p>
+    <p class="highlight">DARIVIA captures them.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- OUTPUT -->
+  <section>
+    <h2>Output</h2>
+    <p>From decisions → to product intelligence</p>
+    <div class="list">
+      <p>— who a product fits</p>
+      <p>— who it fails</p>
+      <p>— and why</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VISION -->
+  <section>
+    <h2>Vision</h2>
+    <p>Today: fashion is product-driven</p>
+    <p>Tomorrow: fashion becomes decision-driven</p>
+    <p class="highlight">
+      Brands that understand decisions will define the market
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHO WE ARE -->
+  <section>
+    <h2>Who we are</h2>
+    <p>DARIVIA digitizes expert decision logic.</p>
+    <p>
+      Built on real-world bespoke fashion experience<br>
+      and structured client–stylist interactions.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <a href="mailto:your@email.com">Email</a>
+    <a href="https://t.me/yourusername" target="_blank">Telegram</a>
+  </section>
+
+</div>
+
+<script>
+/* HEADER TRANSITION */
+setTimeout(() => {
+  document.getElementById("brand").textContent = "darivia.com";
+}, 2000);
+
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+</script>
+
 </body>
 </html>
