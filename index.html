@@ -6,12 +6,12 @@
 
 <title>DARIVIA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --text-main: #0a0a0a;
-  --text-secondary: #666;
+  --text-secondary: #555;
   --line: #eaeaea;
 }
 
@@ -22,31 +22,74 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background: #fff;
   color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER */
+/* HEADER (ТВОЙ ОРИГИНАЛ) */
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.title {
+  font-weight: 400;
+  color: #1a1a1a;
   text-align: center;
-  padding: 60px 20px 0;
-  font-size: clamp(28px, 6vw, 64px);
-  letter-spacing: 0.25em;
-  font-weight: 300;
+  line-height: 1;
+
+  font-size: clamp(60px, 18vw, 600px);
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  filter: blur(8px);
+
+  animation: luxuryReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
 }
 
-/* GRID */
+@keyframes luxuryReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateY(5px) scale(1.01);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.title::after {
+  content: '';
+  display: block;
+  animation: subtleBreath 4s ease-in-out infinite;
+}
+
+@keyframes subtleBreath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.002); }
+}
+
+/* LAYOUT */
 .wrapper {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 100px 24px 120px;
+  padding: 120px 32px;
 }
 
-/* SECTIONS */
 .section {
-  margin-bottom: 120px;
+  margin-bottom: 140px;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.9s ease;
@@ -58,51 +101,50 @@ body {
 }
 
 /* TYPOGRAPHY */
+
 .hero h1 {
-  font-size: clamp(34px, 6vw, 60px);
+  font-size: clamp(42px, 6vw, 72px);
   line-height: 1.1;
-  letter-spacing: -0.02em;
   font-weight: 400;
 }
 
 .hero p {
+  font-size: 26px;
   margin-top: 28px;
-  font-size: 20px;
   color: var(--text-secondary);
 }
 
-.title {
-  font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  margin-bottom: 24px;
+/* ТОПИКИ — ОЧЕНЬ КРУПНО */
+.title-section {
+  font-size: clamp(36px, 5vw, 56px);
+  margin-bottom: 32px;
+  font-weight: 400;
 }
 
+/* ОСНОВНОЙ ТЕКСТ */
 .text {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.6;
   color: var(--text-secondary);
 }
 
 .big {
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.4;
-  color: var(--text-main);
 }
 
 .bold {
   color: var(--text-main);
-  font-weight: 500;
 }
 
 /* LIST */
 .list {
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .list div {
-  margin-bottom: 8px;
+  font-size: 22px;
+  margin-bottom: 10px;
   color: var(--text-secondary);
 }
 
@@ -110,7 +152,7 @@ body {
 .divider {
   height: 1px;
   background: var(--line);
-  margin: 80px 0;
+  margin: 100px 0;
 }
 
 /* CTA */
@@ -119,38 +161,27 @@ body {
 }
 
 .cta a {
-  border-bottom: 1px solid #000;
+  font-size: 20px;
+  margin: 0 16px;
   text-decoration: none;
+  border-bottom: 1px solid #000;
   color: #000;
-  margin: 0 10px;
-  font-size: 16px;
-  transition: opacity 0.3s ease;
-}
-
-.cta a:hover {
-  opacity: 0.5;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .wrapper {
-    padding: 80px 20px;
-  }
-
-  .big {
-    font-size: 20px;
-  }
-
-  .text {
-    font-size: 16px;
-  }
+  .text { font-size: 18px; }
+  .big { font-size: 22px; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="header" id="brand">DARIVIA</div>
+<!-- HEADER -->
+<div class="header">
+  <div class="title">DARIVIA</div>
+</div>
 
 <div class="wrapper">
 
@@ -170,21 +201,22 @@ body {
 
   <!-- PROBLEM -->
   <div class="section">
-    <div class="title">Problem</div>
+    <div class="title-section">Problem</div>
+
     <div class="text">
       Brands optimize products.<br><br>
       But decisions happen before products are evaluated.
     </div>
 
     <div class="list">
-      <div><span class="bold">What brands see:</span></div>
+      <div><b>What brands see:</b></div>
       <div>— clicks</div>
       <div>— fittings</div>
       <div>— purchases</div>
     </div>
 
     <div class="list">
-      <div><span class="bold">What they don’t see:</span></div>
+      <div><b>What they don’t see:</b></div>
       <div>— hesitation</div>
       <div>— reasoning</div>
       <div>— rejection</div>
@@ -199,10 +231,12 @@ body {
 
   <!-- CATEGORY -->
   <div class="section">
-    <div class="title">Category</div>
+    <div class="title-section">Category</div>
+
     <div class="big">
       Decision Trajectory Intelligence (DTI)
     </div>
+
     <div class="text" style="margin-top:12px;">
       A new data layer for fashion.
     </div>
@@ -212,11 +246,13 @@ body {
 
   <!-- VALUE -->
   <div class="section">
-    <div class="title">Value</div>
+    <div class="title-section">Value</div>
+
     <div class="big">
       For the first time,<br>
       brands don’t just see what was chosen.
     </div>
+
     <div class="big bold" style="margin-top:12px;">
       They see what failed — and why.
     </div>
@@ -232,12 +268,14 @@ body {
 
   <!-- DATA -->
   <div class="section">
-    <div class="title">Data moat</div>
+    <div class="title-section">Data moat</div>
+
     <div class="text">
       Decisions are ephemeral.<br>
       They exist only in the moment.<br><br>
       If not captured — they are lost forever.
     </div>
+
     <div class="big bold" style="margin-top:12px;">
       DARIVIA captures them.
     </div>
@@ -247,11 +285,13 @@ body {
 
   <!-- VISION -->
   <div class="section">
-    <div class="title">Vision</div>
+    <div class="title-section">Vision</div>
+
     <div class="text">
       Today: fashion is product-driven<br>
       Tomorrow: fashion becomes decision-driven
     </div>
+
     <div class="big bold" style="margin-top:12px;">
       Brands that understand decisions will define the market
     </div>
@@ -261,7 +301,8 @@ body {
 
   <!-- WHO -->
   <div class="section">
-    <div class="title">Who we are</div>
+    <div class="title-section">Who we are</div>
+
     <div class="text">
       DARIVIA digitizes expert decision logic.<br><br>
       Built on real-world bespoke fashion experience<br>
@@ -280,10 +321,6 @@ body {
 </div>
 
 <script>
-setTimeout(() => {
-  document.getElementById("brand").textContent = "darivia.com";
-}, 2000);
-
 const sections = document.querySelectorAll(".section");
 
 const observer = new IntersectionObserver(entries => {
