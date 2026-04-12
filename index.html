@@ -106,27 +106,29 @@ body {
 
 .hero h1 {
   font-size: clamp(30px, 6vw, 48px);
-  line-height: 1.1;
+  line-height: 1.2;
   font-weight: 300;
 }
 
 .hero p {
   font-size: 22px;
+  line-height: 1.2;
+  font-weight: 100;
   margin-top: 42px;
   color: var(--text-secondary);
 }
 
 /* ТОПИКИ — ОЧЕНЬ КРУПНО */
 .title-section {
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(46px, 5vw, 56px);
   margin-bottom: 32px;
-  font-weight: 400;
+  font-weight: 100;
 }
 
 /* ОСНОВНОЙ ТЕКСТ */
 .text {
   font-size: 22px;
-  line-height: 1.6;
+  line-height: 1.2;
   color: var(--text-secondary);
 }
 
@@ -159,7 +161,7 @@ body {
 
 /* CTA */
 .cta {
-  text-align: center;
+  text-align: left;
 }
 
 .cta a {
@@ -172,8 +174,8 @@ body {
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .text { font-size: 18px; }
-  .big { font-size: 22px; }
+  .text { font-size: 22px; }
+  .big { font-size: 28px; }
 }
 </style>
 </head>
@@ -206,21 +208,21 @@ body {
 
   <!-- PROBLEM -->
   <div class="section">
-    <div class="title-section">Problem</div>
+    <div class="title-section">PROBLEM</div>
 
     <div class="text">
       Brands optimize products.<br><br>
       But decisions happen before products are evaluated.
     </div>
 
-    <div class="list">
+    <div class="list" style="margin-left:12px;>
       <div><b>What brands see:</b></div>
       <div>— clicks</div>
       <div>— fittings</div>
       <div>— purchases</div>
     </div>
 
-    <div class="list">
+    <div class="list" style="margin-left:12px;>
       <div><b>What they don’t see:</b></div>
       <div>— hesitation</div>
       <div>— reasoning</div>
@@ -251,7 +253,7 @@ body {
 
   <!-- VALUE -->
   <div class="section">
-    <div class="title-section">Value</div>
+    <div class="title-section">VALUE</div>
 
     <div class="big">
       For the first time,<br>
@@ -262,7 +264,7 @@ body {
       They see what failed — and why.
     </div>
 
-    <div class="list">
+    <div class="list" style="margin-left:12px;>
       <div>— better product decisions</div>
       <div>— real demand understanding</div>
       <div>— reduced uncertainty</div>
@@ -273,7 +275,7 @@ body {
 
   <!-- DATA -->
   <div class="section">
-    <div class="title-section">Data moat</div>
+    <div class="title-section">DATA MOAT</div>
 
     <div class="text">
       Decisions are ephemeral.<br>
@@ -290,7 +292,7 @@ body {
 
   <!-- VISION -->
   <div class="section">
-    <div class="title-section">Vision</div>
+    <div class="title-section">VISION</div>
 
     <div class="text">
       Today: fashion is product-driven<br>
@@ -306,7 +308,7 @@ body {
 
   <!-- WHO -->
   <div class="section">
-    <div class="title-section">Who we are</div>
+    <div class="title-section">WHO WE ARE</div>
 
     <div class="text">
       DARIVIA digitizes expert decision logic.<br><br>
@@ -318,6 +320,10 @@ body {
   <div class="divider"></div>
 
   <!-- CTA -->
+    <div class="text">
+      Full presentation request:
+    </div>
+    
   <div class="section cta">
     <a href="mailto:your@email.com">Email</a>
     <a href="https://t.me/yourusername" target="_blank">Telegram</a>
