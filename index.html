@@ -106,26 +106,30 @@ body {
 }
 
 /* TYPOGRAPHY */
-
+body {
+  letter-spacing: -0.01em;
+}
+  
 .hero h1 {
   font-size: clamp(30px, 6vw, 48px);
-  line-height: 1.2;
+  line-height: 1.5;
   font-weight: 600;
 }
 
 .hero p {
   font-size: 22px;
-  line-height: 1.2;
-  font-weight: 200;
-  margin-top: 42px;
+  line-height: 1.5;
+  font-weight: 300;
+  margin-top: 36px;
   color: var(--text-secondary);
 }
 
 /* ТОПИКИ — ОЧЕНЬ КРУПНО */
 .title-section {
-  font-size: clamp(100px, 5vw, 116px);
+  font-size: clamp(48px, 5vw, 72px);
   margin-bottom: 52px;
-  font-weight: 200;
+  letter-spacing: ~0.01em
+  font-weight: 300;
 }
 
 /* ОСНОВНОЙ ТЕКСТ */
@@ -133,15 +137,21 @@ body {
   font-size: 22px;
   line-height: 1.4;
   font-weight: 200;
+  margin-top: 12px;
   color: var(--text-secondary);
 }
 
 .big {
-  font-size: 30px;
+  font-size: 28px;
   line-height: 1.4;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: ~0.01em
 }
 
+  .big + .text {
+  margin-top: 16px;
+}
+  
 .bold {
   color: var(--text-main);
   font-weight: 600;
@@ -154,17 +164,17 @@ body {
 
 .list div {
   font-size: 22px;
-  font-weight: 200;
-  margin-left: 50px;
-  margin-bottom: 10px;
+  font-weight: 300;
+  margin-left: 0px;
+  margin-bottom: 12px;
   color: var(--text-secondary);
 }
 
 /* DIVIDER */
-.divider {
+..divider {
   height: 1px;
-  background: var(--line);
-  margin: 100px 0;
+  opacity: 0.5;
+  margin: 80px 0;
 }
 
 /* CTA */
@@ -361,9 +371,9 @@ body {
 
   <!-- CTA -->
    <div class="section shift">
-   <div class="big bold">
-      Request full presentation<br><br>
-    </div>
+   <div class="big">
+  Full presentation — on request
+</div>
     
   <div class="cta" style="margin-top: 22px;">
     <a href="mailto:yk@darivia.com">Email</a>
