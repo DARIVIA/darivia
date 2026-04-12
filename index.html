@@ -6,8 +6,7 @@
 
 <title>DARIVIA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600&display=swap">
 <style>
 :root {
   --text-main: #0a0a0a;
@@ -91,7 +90,7 @@ body {
 }
 
 .section {
-  margin-bottom: 140px;
+  margin-bottom: 160px;
   opacity: 0;
   transform: translateY(22px);
   transition: all 0.9s ease;
@@ -129,16 +128,19 @@ body {
 .text {
   font-size: 22px;
   line-height: 1.4;
+  font-weight: 200;
   color: var(--text-secondary);
 }
 
 .big {
   font-size: 30px;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 .bold {
   color: var(--text-main);
+  font-weight: 600;
 }
 
 /* LIST */
@@ -148,6 +150,7 @@ body {
 
 .list div {
   font-size: 22px;
+  font-weight: 200;
   margin-left: 30px;
   margin-bottom: 10px;
   color: var(--text-secondary);
@@ -167,14 +170,22 @@ body {
 
 .cta a {
   font-size: 22px;
+  font-weight: 200;
   margin: 0 16px;
   text-decoration: none;
   border-bottom: 1px solid #000;
   color: #000;
 }
 
+@media (min-width: 1200px) {
+  .section.shift {
+    margin-left: 33%;
+  }
+}
+  
 /* MOBILE */
 @media (max-width: 600px) {
+  .header { padding-top: 200px;}
   .text { font-size: 22px; }
   .big { font-size: 32px; }
   .bold {color: var(--text-main); }
@@ -220,19 +231,9 @@ body {
     <div class="big bold">
       The most valuable data is missing.
     </div>
-    
-    <div class="text" style="margin-top:22px;">
-    <div><b>What brands see:</b><br></div>
-    </div>
-    
-    <div class="list">
-      <div>- clicks</div>
-      <div>- fittings</div>
-      <div>- purchases</div>
-    </div>
 
     <div class="text" style="margin-top:22px;">
-    <div><b>What they don’t see:</b><br></div>
+    <div><b>What brands don’t see:</b><br></div>
     </div>
 
     <div class="list">
