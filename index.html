@@ -40,7 +40,8 @@ body {
   font-weight: 400;
   color: #1a1a1a;
   text-align: left;
-  line-height: 1;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
 
   font-size: clamp(58px, 12vw, 600px);
   width: 100%;
@@ -90,11 +91,14 @@ body {
 }
 
 .section {
-  margin-bottom: 160px;
+  margin-bottom: 120px;
   opacity: 0;
   transform: translateY(22px);
   transition: all 0.9s ease;
 }
+.section.shift {
+  margin-bottom: 160px;
+}  
   
 .section:last-of-type {
   margin-bottom: 60px;
@@ -113,7 +117,7 @@ body {
 .hero h1 {
   font-size: clamp(30px, 6vw, 48px);
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hero p {
@@ -124,7 +128,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* ТОПИКИ — ОЧЕНЬ КРУПНО */
+/* ТОПИКИ */
 .title-section {
   font-size: clamp(48px, 5vw, 72px);
   margin-bottom: 52px;
@@ -163,7 +167,9 @@ body {
 }
 
 .list div {
-  font-size: 22px;
+  font-size: 20px;
+  line-height: 1.6;
+  opacity: 0.85;
   font-weight: 300;
   margin-left: 0px;
   margin-bottom: 12px;
@@ -369,7 +375,8 @@ body {
   <!-- CTA -->
    <div class="section shift">
    <div class="big">
-  Full presentation — on request
+  Full presentation — on request.<br>
+  For partners and investors.
 </div>
     
   <div class="cta" style="margin-top: 22px;">
@@ -392,7 +399,7 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add("visible");
     }
   });
-}, { threshold: 0.1 });
+}, { rootMargin: "0px 0px -80px 0px" });
 
 sections.forEach(section => observer.observe(section));
 </script>
