@@ -86,7 +86,7 @@ body {
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 .section {
@@ -95,7 +95,11 @@ body {
   transform: translateY(22px);
   transition: all 0.9s ease;
 }
-
+  
+.section:last-of-type {
+  margin-bottom: 60px;
+}
+  
 .section.visible {
   opacity: 1;
   transform: translateY(0);
@@ -342,7 +346,7 @@ body {
   <!-- CTA -->
    <div class="section shift">
    <div class="big bold">
-      Full presentation request:<br><br>
+      Full presentation — on request:<br><br>
     </div>
     
   <div class="section cta">
