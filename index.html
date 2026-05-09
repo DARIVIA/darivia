@@ -132,7 +132,7 @@ body {
 .title-section {
   font-size: clamp(48px, 5vw, 72px);
   margin-bottom: 52px;
-  letter-spacing: ~0.01em
+  letter-spacing: 0.01em
   font-weight: 300;
 }
 
@@ -149,7 +149,7 @@ body {
   font-size: 28px;
   line-height: 1.4;
   font-weight: 400;
-  letter-spacing: ~0.01em
+  letter-spacing: 0.01em
 }
 
   .big + .text {
@@ -175,7 +175,70 @@ body {
   margin-bottom: 12px;
   color: var(--text-secondary);
 }
+  
+/* MISMATCH TABLE */
 
+.mismatch-table {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.mismatch-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 160px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.mismatch-row:last-child {
+  border-bottom: none;
+}
+
+.mismatch-name {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.mismatch-percent {
+  font-size: 22px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.mismatch-link {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.55);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+}
+  
+.mismatch-link:hover {
+  opacity: 1;
+  color: #000;
+}
+
+.mismatch-footer {
+  margin-top: 32px;
+}
+  
+.mismatch-footer a {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-main);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding-bottom: 2px;
+}
+  
+.mismatch-footer a:hover {
+  border-color: rgba(0,0,0,0.6);
+}
+  
 /* DIVIDER */
 .divider {
   height: 1px;
@@ -322,16 +385,37 @@ body {
     Main mismatch drivers:
     </div>
     
-    <div class="list" style="margin-bottom: 22px;">
-      <div>Silhouette: 40%   [ View reasons ]</div>
-      <div>Fabric: 17%   [ View reasons ]</div>
-      <div>Color: 22%   [ View reasons ]</div>
-      <div>Price: 21%   [ View reasons ]</div>
-    </div>
-    
-      <div class="list" style="margin-bottom: 22px;">
-         <div>[ View all customer mismatch cases ]</div>
-    </div>
+    <div class="mismatch-table">
+
+  <div class="mismatch-row">
+    <div class="mismatch-name">Silhouette</div>
+    <div class="mismatch-percent">40%</div>
+    <a href="#" class="mismatch-link">View reasons</a>
+  </div>
+
+  <div class="mismatch-row">
+    <div class="mismatch-name">Fabric</div>
+    <div class="mismatch-percent">17%</div>
+    <a href="#" class="mismatch-link">View reasons</a>
+  </div>
+
+  <div class="mismatch-row">
+    <div class="mismatch-name">Color</div>
+    <div class="mismatch-percent">22%</div>
+    <a href="#" class="mismatch-link">View reasons</a>
+  </div>
+
+  <div class="mismatch-row">
+    <div class="mismatch-name">Price</div>
+    <div class="mismatch-percent">21%</div>
+    <a href="#" class="mismatch-link">View reasons</a>
+  </div>
+</div>
+
+<div class="mismatch-footer">
+
+  <a href="#"> View all customer mismatch cases</a>
+</div>
   </div>
 
   <div class="divider"></div>
@@ -351,7 +435,7 @@ body {
     </div>
 
     <div class="text" style="margin-top: 52px;">
-      <b></b>Guessing → understanding → guiding</b>
+      <b>Guessing → understanding → guiding</b>
     </div>
   </div>
   
