@@ -208,35 +208,17 @@ body {
   color: var(--text-main);
 }
 
-.mismatch-link {
+.mismatch-meta {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(0,0,0,0.45);
+}
+  
+.mismatch-footer {
+  margin-top: 32px;
   font-size: 16px;
   font-weight: 300;
   color: rgba(0,0,0,0.55);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-
-}
-  
-.mismatch-link:hover {
-  opacity: 1;
-  color: #000;
-}
-
-.mismatch-footer {
-  margin-top: 32px;
-}
-  
-.mismatch-footer a {
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--text-main);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  padding-bottom: 2px;
-}
-  
-.mismatch-footer a:hover {
-  border-color: rgba(0,0,0,0.6);
 }
   
 /* DIVIDER */
@@ -382,7 +364,7 @@ body {
     <b>SKU #22338</b><br><br>
     Based on 1,248 decisions<br>
     Customer match: 70%<br><br>
-    Main mismatch drivers:
+    <b>Main mismatch drivers:</b>
     </div>
     
     <div class="mismatch-table">
@@ -390,31 +372,30 @@ body {
   <div class="mismatch-row">
     <div class="mismatch-name">Silhouette</div>
     <div class="mismatch-percent">40%</div>
-    <a href="#" class="mismatch-link">View reasons</a>
+    <div class="mismatch-meta">View reasons</div>
   </div>
 
   <div class="mismatch-row">
     <div class="mismatch-name">Fabric</div>
     <div class="mismatch-percent">17%</div>
-    <a href="#" class="mismatch-link">View reasons</a>
+    <div class="mismatch-meta">View reasons</div>
   </div>
 
   <div class="mismatch-row">
     <div class="mismatch-name">Color</div>
     <div class="mismatch-percent">22%</div>
-    <a href="#" class="mismatch-link">View reasons</a>
+    <div class="mismatch-meta">View reasons</div>
   </div>
 
   <div class="mismatch-row">
     <div class="mismatch-name">Price</div>
     <div class="mismatch-percent">21%</div>
-    <a href="#" class="mismatch-link">View reasons</a>
+    <div class="mismatch-meta">View reasons</div>
   </div>
 </div>
 
 <div class="mismatch-footer">
-
-  <a href="#"> View all customer mismatch cases</a>
+  View all customer mismatch cases
 </div>
   </div>
 
