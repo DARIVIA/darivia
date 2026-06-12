@@ -149,7 +149,7 @@ body {
   font-size: 28px;
   line-height: 1.4;
   font-weight: 400;
-  letter-spacing: 0.01em
+  letter-spacing: 0.01em;
 }
 
   .big + .text {
@@ -225,6 +225,9 @@ body {
   .how-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .how-grid::after {
+    display: none;
   }
 }
   
@@ -306,9 +309,11 @@ body {
 /* MOBILE */
 @media (max-width: 600px) {
   .header { padding: 160px 20px 10px 20px;}
+  
   .title {
   font-weight: 600;
   font-size: clamp(58px, 18vw, 600px);
+  }
 }
 </style>
 </head>
@@ -327,39 +332,32 @@ body {
   <!-- HERO -->
   <div class="section hero">
     <h1>
-      Decision Trajectory Intelligence (DTI) —<br>
-      A framework for identifying mismatches between products and customers<br> 
-      Through AI-assisted selection.<br><br>
+      Decision Trajectory Intelligence (DTI)<br>
+      A framework for identifying mismatches between products and customers through AI-assisted selection.<br>
+      Shows brands which product characteristics do not match customer goals and parameters.<br><br>
     </h1>
-    <p>
-      Brands see outcomes.<br>
-      But rarely see which product characteristics don’t match customer goals and parameters.<br><br>
-    </p>
     </div>
-   
-    <div class="big bold" style="margin-bottom: 22px; margin-top: -72px;">
-      “Doesn’t work” isn’t an answer.<br>
-    </div> 
   
   <div class="divider"></div>
 
   <!-- PROBLEM -->
   <div class="section shift">
     <div class="title-section">PROBLEM</div>
+
+    <div class="big bold" style="margin-bottom: 22px; margin-top: -72px;">
+      “Doesn’t work” isn’t an answer.<br>
+    </div> 
     
     <div class="text">
-      Brands see results — <br>
+      Brands see outcomes — <br>
       sell-through, returns, markdowns.<br><br>
-    </div>
-    
-    <div class="big bold">
       But customer-product mismatches remain largely invisible.
     </div>
 
     <div class="list">
       <div>·&nbsp;&nbsp;What doesn’t match.</div>
       <div>·&nbsp;&nbsp;Which customers it doesn’t match.</div>
-      <div>·&nbsp;&nbsp;Which product characteristics create the mismatch.</div>
+      <div>·&nbsp;&nbsp;Which product characteristics don't match.</div>
     </div>
   </div>
 
@@ -431,7 +429,7 @@ body {
   </div>
 
   <div class="text">
-    and records where mismatches occur.
+    and records where mismatches occur between customer goals, parameters, and product characteristics.
   </div>
 </div>
 
@@ -446,7 +444,7 @@ body {
     <div class="text">
     <b>SKU #22338</b><br><br>
     Based on 1,248 selection trajectories<br>
-    Product-Client Fit Index: 70%<br><br>
+    Customer-Product Match Score: 70%<br><br>
     <b>Customer Mismatch Areas</b>
     </div>
     
@@ -520,7 +518,7 @@ body {
     <div class="list">
       <div>·&nbsp;&nbsp;See where products don’t match customers.</div>
       <div>·&nbsp;&nbsp;Understand which product characteristics create mismatches.</div>
-      <div>·&nbsp;&nbsp;Replace assumptions with structured customer-product fit data.</div>
+      <div>·&nbsp;&nbsp;Replace assumptions with structured mismatch data.</div>
       <div>·&nbsp;&nbsp;Make assortment decisions with greater confidence.</div>
     </div>
 
