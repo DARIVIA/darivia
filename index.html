@@ -175,6 +175,27 @@ body {
   margin-bottom: 12px;
   color: var(--text-secondary);
 }
+
+/* HOW GRID */
+.how-grid {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin: 32px 0;
+}
+
+.how-column h3 {
+    margin-bottom: 16px;
+}
+
+.how-column ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.how-column li {
+    margin-bottom: 8px;
+}
   
 /* MISMATCH TABLE */
 
@@ -275,9 +296,9 @@ body {
   <!-- HERO -->
   <div class="section hero">
     <h1>
-      Decision Trajectory Intelligence (DTI)<br>
+      Decision Trajectory Intelligence (DTI) -<br>
       A framework for identifying mismatches between products and customers<br> 
-      through AI-assisted selection.<br><br>
+      Through AI-assisted selection.<br><br>
     </h1>
     <p>
       Brands see outcomes.<br>
@@ -353,37 +374,35 @@ body {
   <div class="divider"></div>
 
   <!-- HOW -->
-  <div class="section">
+  <section class="how-section">
+
     <div class="title-section">HOW</div>
 
-    <div class="text">
-      During AI-assisted selection, the system evaluates:<br><br>
-      Customer<br>
-    </div>
+    <p>During AI-assisted selection, the system evaluates:</p>
 
-      <div class="list">
-      <div>·&nbsp;&nbsp;Goals</div>
-      <div>·&nbsp;&nbsp;Parameters</div>
-      <div>·&nbsp;&nbsp;Preferences</div>
-    </div>
+    <div class="how-grid">
 
-      <div class="text">
-      against<br><br>
-      Product<br>
-      </div>
-
-      <div class="list">
-      <div>·&nbsp;&nbsp;Material</div>
-      <div>·&nbsp;&nbsp;Color</div>
-      <div>·&nbsp;&nbsp;Price</div>
-      <div>·&nbsp;&nbsp;Other product characteristics</div>
+    <div>
+        <strong>Customer</strong>
+        <p>Goals</p>
+        <p>Parameters</p>
+        <p>Preferences</p>
     </div>
-     
-      <div class="text">
-      and records where mismatches occur.
-    </div>
-  </div>
+    <div>
+        <strong>Product</strong>
+        <p>Material</p>
+        <p>Color</p>
+        <p>Price</p>
+        <p>Other product characteristics</p>
 
+    </div>
+</div>
+
+    <p>and records where mismatches occur.</p>
+
+</section>
+
+  
   <div class="divider"></div>
   
   <!-- MISMATCHES -->
