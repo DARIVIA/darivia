@@ -177,20 +177,55 @@ body {
 }
 
 /* HOW GRID */
+
+.how-section {
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
 .how-grid {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin: 32px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin: 32px 0;
 }
 
-.how-column ul {
-    margin: 0;
-    padding-left: 20px;
+.how-grid {
+  position: relative;
 }
-.how-column li {
-    margin-bottom: 8px;
+
+.how-grid::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0,0,0,0.08);
+}
+  
+.how-column-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.how-item {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .how-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
   
 /* MISMATCH TABLE */
@@ -372,30 +407,33 @@ body {
   <!-- HOW -->
   <section class="how-section">
 
-    <div class="title-section">HOW</div>
+  <div class="title-section">HOW</div>
 
-    <p>During AI-assisted selection, the system evaluates:</p>
+  <div class="text">
+    During AI-assisted selection, the system evaluates:
+  </div>
 
-    <div class="how-grid">
+  <div class="how-grid">
 
     <div>
-        <strong>Customer</strong>
-        <p>Goals</p>
-        <p>Parameters</p>
-        <p>Preferences</p>
+      <div class="how-column-title">Customer</div>
+      <div class="how-item">Goals</div>
+      <div class="how-item">Parameters</div>
+      <div class="how-item">Preferences</div>
     </div>
+
     <div>
-        <strong>Product</strong>
-        <p>Material</p>
-        <p>Color</p>
-        <p>Price</p>
-        <p>Other product characteristics</p>
-
+      <div class="how-column-title">Product</div>
+      <div class="how-item">Material</div>
+      <div class="how-item">Color</div>
+      <div class="how-item">Price</div>
+      <div class="how-item">Other product characteristics</div>
     </div>
-</div>
+  </div>
 
-    <p>and records where mismatches occur.</p>
-
+  <div class="text">
+    and records where mismatches occur.
+  </div>
 </section>
 
   
