@@ -305,6 +305,163 @@ body {
     margin-left: 25%;
   }
 }
+
+/* CURRENT RESEARCH */
+
+.research-card {
+  width: 100%;
+}
+
+.research-headline {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(46px, 6vw, 72px);
+  line-height: 1.03;
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  color: var(--text-main);
+  max-width: 880px;
+}
+
+.research-brands {
+  margin-top: 38px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #68121c;
+}
+
+.research-line {
+  width: 100%;
+  height: 1px;
+  background: #68121c;
+  margin: 34px 0 44px;
+}
+
+.research-findings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.research-finding {
+  padding: 0 42px 8px 42px;
+}
+
+.research-finding:first-child {
+  padding-left: 0;
+}
+
+.research-finding:last-child {
+  padding-right: 0;
+}
+
+.research-finding + .research-finding {
+  border-left: 1px solid rgba(104, 18, 28, 0.7);
+}
+
+.research-number {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(86px, 11vw, 132px);
+  line-height: 0.9;
+  font-weight: 300;
+  letter-spacing: -0.07em;
+  color: #68121c;
+  white-space: nowrap;
+}
+
+.research-number span {
+  font-size: 0.45em;
+  font-weight: 300;
+  margin-left: 4px;
+  letter-spacing: -0.04em;
+}
+
+.research-description {
+  margin-top: 28px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 19px;
+  line-height: 1.48;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+
+.research-meta {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.research-report-link {
+  display: inline-block;
+  margin-top: 34px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-main);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text-main);
+  padding-bottom: 3px;
+}
+
+.research-report-link:hover {
+  opacity: 0.55;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .research-headline {
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 1.03;
+  }
+
+  .research-brands {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .research-line {
+    margin: 28px 0 20px;
+  }
+
+  .research-findings {
+    grid-template-columns: 1fr;
+  }
+
+  .research-finding,
+  .research-finding:first-child,
+  .research-finding:last-child {
+    padding: 32px 0 38px 0;
+  }
+
+  .research-finding + .research-finding {
+    border-left: none;
+    border-top: 1px solid rgba(104, 18, 28, 0.5);
+  }
+
+  .research-number {
+    font-size: clamp(88px, 26vw, 120px);
+  }
+
+  .research-description {
+    margin-top: 20px;
+    font-size: 19px;
+    max-width: 420px;
+  }
+
+  .research-meta {
+    font-size: 18px;
+  }
+}
+
   
 /* MOBILE */
 @media (max-width: 600px) {
@@ -541,26 +698,73 @@ body {
   <div class="divider"></div>
   
   <!-- CURRENT RESEARCH -->
-  <div class="section">
-    <div class="title-section">CURRENT RESEARCH</div>
+<div class="section">
 
-    <div class="big bold" style="margin-bottom: 22px;">
-      Three uncomfortable findings from luxury-watch assortments<br><br>
-    </div>
-    
-    <div class="list">
-      <div>·&nbsp;&nbsp;379,440 consumer-product fit evaluations.</div>
-      <div>·&nbsp;&nbsp;680 men's watches.</div>
-      <div>·&nbsp;&nbsp;255 synthetic Consumer Mind Models.</div>
-      <div>·&nbsp;&nbsp;558 profile-specific purchase missions.</div>
-      <div>·&nbsp;&nbsp;6 brands: Grand Seiko • Longines • OMEGA • Panerai • Rolex • TUDOR.</div>
-     
+  <div class="title-section">CURRENT RESEARCH</div>
+
+  <div class="research-card">
+
+    <div class="research-headline">
+      Three Uncomfortable<br>
+      Findings from<br>
+      Luxury-Watch Assortments
     </div>
 
-    <div class="text" style="margin-top: 72px;">
-      <b>Contact us to request the report</b>
+    <div class="research-brands">
+      Grand Seiko · Longines · OMEGA · Panerai · Rolex · TUDOR
     </div>
+
+    <div class="research-line"></div>
+
+    <div class="research-findings">
+
+      <div class="research-finding">
+        <div class="research-number">
+          74<span>%</span>
+        </div>
+
+        <div class="research-description">
+          Achieved a strong fit but never entered a final shortlist
+        </div>
+      </div>
+
+      <div class="research-finding">
+        <div class="research-number">
+          16<span>%</span>
+        </div>
+
+        <div class="research-description">
+          Showed repeated intra-brand role overlap — a signal of potential cannibalization
+        </div>
+      </div>
+
+      <div class="research-finding">
+        <div class="research-number">
+          15<span>%</span>
+        </div>
+
+        <div class="research-description">
+          Lost shortlist presence under at least one strong trend scenario
+        </div>
+      </div>
+
+    </div>
+
+    <div class="research-line"></div>
+
+    <div class="research-meta">
+      379,440 Consumer × Goal × SKU evaluations<br>
+      680 men’s watches · €5k–15k
+    </div>
+
+    <a
+      href="mailto:yk@darivia.com?subject=DTI%20Luxury%20Watch%20Research"
+      class="research-report-link">
+      Request the full research
+    </a>
+
   </div>
+</div>
   
   <div class="divider"></div>
 
