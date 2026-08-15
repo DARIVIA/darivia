@@ -1,805 +1,1535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DARIVIA — Decision Trajectory Intelligence">
 <title>DARIVIA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --text-main: #0a0a0a;
   --text-secondary: #555;
+  --text-muted: #8a8a8a;
   --line: #eaeaea;
+  --line-dark: rgba(0, 0, 0, 0.16);
+  --paper: #fff;
+  --soft: #f7f7f5;
+  --accent: #68121c;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background: #fff;
+  background: var(--paper);
   color: var(--text-main);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER (ТВОЙ ОРИГИНАЛ) */
-.header {
-  padding: 50px 32px 10px 32px;
-}
-  
-.header-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-  
+a { color: inherit; }
+
+.header { padding: 50px 32px 10px; }
+.header-inner { max-width: 900px; margin: 0 auto; }
+
 .title {
-  font-weight: 400;
-  color: #1a1a1a;
-  text-align: left;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-
-  font-size: clamp(58px, 12vw, 600px);
   width: 100%;
-
+  color: #1a1a1a;
+  font-size: clamp(58px, 12vw, 600px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -.02em;
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
+  transform: translateY(20px) scale(.98);
   filter: blur(8px);
-
-  animation: luxuryReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 0.3s;
+  animation: luxuryReveal 1.8s cubic-bezier(.22, 1, .36, 1) .3s forwards;
 }
 
 @keyframes luxuryReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    filter: blur(8px);
-  }
-  60% {
-    opacity: 0.7;
-    transform: translateY(5px) scale(1.01);
-    filter: blur(2px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
+  0% { opacity: 0; transform: translateY(20px) scale(.98); filter: blur(8px); }
+  60% { opacity: .7; transform: translateY(5px) scale(1.01); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
-.title::after {
-  content: '';
-  display: block;
-  animation: subtleBreath 4s ease-in-out infinite;
-}
+.title::after { content: ''; display: block; animation: subtleBreath 4s ease-in-out infinite; }
+@keyframes subtleBreath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.002); } }
 
-@keyframes subtleBreath {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.002); }
-}
-
-/* LAYOUT */
-.wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px 20px 0px 20px;
-}
+.wrapper { max-width: 900px; margin: 0 auto; padding: 20px 20px 0; }
 
 .section {
   margin-bottom: 120px;
   opacity: 0;
   transform: translateY(22px);
-  transition: all 0.9s ease;
+  transition: opacity .9s ease, transform .9s ease;
 }
-.section.shift {
-  margin-bottom: 160px;
-}  
-  
-.section:last-of-type {
-  margin-bottom: 60px;
-}
-  
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.section.shift { margin-bottom: 160px; }
+.section:last-of-type { margin-bottom: 60px; }
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.divider { height: 1px; background: rgba(0, 0, 0, .05); margin: 80px 0; }
+
+.hero h1 { font-size: 28px; line-height: 1.5; font-weight: 500; }
+.hero p, .text { font-size: 22px; line-height: 1.4; font-weight: 300; color: var(--text-secondary); }
+.hero p { margin-top: 36px; }
+.text { margin-top: 12px; }
+.text b { color: var(--text-main); font-weight: 600; }
+
+.title-section {
+  margin-bottom: 52px;
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 300;
+  letter-spacing: .01em;
+  line-height: 1.05;
 }
 
-/* TYPOGRAPHY */
-body {
-  letter-spacing: -0.01em;
+.big { font-size: 28px; line-height: 1.4; font-weight: 400; letter-spacing: .01em; }
+.bold { color: var(--text-main); font-weight: 600; }
+.eyebrow { margin-bottom: 18px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.note { color: var(--text-muted); font-size: 15px; line-height: 1.55; font-weight: 300; }
+
+.list { margin-top: 28px; }
+.list div { margin-bottom: 12px; color: var(--text-secondary); font-size: 22px; line-height: 1.6; font-weight: 300; }
+
+/* Shared visual language */
+.visual { margin-top: 52px; border-top: 1px solid var(--text-main); border-bottom: 1px solid var(--line-dark); }
+.visual-label { padding: 14px 0; color: var(--text-muted); font-size: 11px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
+.arrow { color: var(--text-muted); font-weight: 300; }
+
+/* PROBLEM — existing systems vs DTI */
+.systems-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.system-card { min-height: 228px; padding: 26px 22px 28px; border-right: 1px solid var(--line); }
+.system-card:first-child { padding-left: 0; }
+.system-card:last-child { padding-right: 0; border-right: 0; }
+.system-card.dti { color: var(--accent); }
+.system-name { margin-bottom: 34px; font-size: 15px; font-weight: 600; letter-spacing: .04em; }
+.system-row { margin-top: 17px; }
+.system-key { margin-bottom: 4px; color: var(--text-muted); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.system-card.dti .system-key { color: rgba(104, 18, 28, .62); }
+.system-value { font-size: 16px; line-height: 1.42; font-weight: 300; }
+
+/* WHAT WE DO — platform architecture */
+.architecture { padding: 28px 0 32px; }
+.architecture-flow { display: grid; grid-template-columns: 1fr 38px 1fr 38px 1.35fr; align-items: stretch; }
+.architecture-box { display: flex; min-height: 126px; padding: 20px; border: 1px solid var(--line-dark); flex-direction: column; justify-content: space-between; }
+.architecture-box.core { border-color: var(--accent); }
+.architecture-arrow { display: grid; place-items: center; color: var(--text-muted); font-size: 21px; font-weight: 300; }
+.box-kicker { color: var(--text-muted); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.architecture-box.core .box-kicker { color: var(--accent); }
+.box-title { margin-top: 22px; font-size: 18px; line-height: 1.25; font-weight: 500; }
+.box-copy { margin-top: 8px; color: var(--text-secondary); font-size: 13px; line-height: 1.45; font-weight: 300; }
+.foundation { display: grid; grid-template-columns: 1fr 38px 2.35fr; margin-top: 12px; }
+.foundation-box { grid-column: 3; padding: 13px 20px; border: 1px dashed var(--line-dark); color: var(--text-muted); font-size: 12px; line-height: 1.45; }
+.outputs-arch { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; margin-left: calc(40% + 15px); }
+.output-arch { padding: 18px 20px; background: var(--soft); }
+.output-arch strong { display: block; margin-bottom: 5px; font-size: 14px; font-weight: 600; }
+.output-arch span { color: var(--text-secondary); font-size: 12px; line-height: 1.4; font-weight: 300; }
+
+/* HOW — decision pipeline */
+.pipeline { padding: 30px 0 34px; overflow: hidden; }
+.pipeline-track { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; }
+.pipeline-track::before { content: ''; position: absolute; top: 18px; right: 7%; left: 7%; height: 1px; background: var(--line-dark); }
+.pipeline-step { position: relative; padding: 0 10px; text-align: center; }
+.pipeline-step:first-child { padding-left: 0; }
+.pipeline-step:last-child { padding-right: 0; }
+.pipeline-dot { width: 37px; height: 37px; margin: 0 auto 18px; display: grid; place-items: center; position: relative; z-index: 1; border: 1px solid var(--line-dark); border-radius: 50%; background: var(--paper); font-size: 11px; font-weight: 600; }
+.pipeline-step:last-child .pipeline-dot { border-color: var(--accent); color: var(--accent); }
+.pipeline-name { font-size: 13px; line-height: 1.35; font-weight: 500; }
+.pipeline-copy { margin-top: 7px; color: var(--text-muted); font-size: 11px; line-height: 1.4; font-weight: 300; }
+
+/* TWO OUTPUTS */
+.two-outputs { display: grid; grid-template-columns: 1fr 1fr; margin-top: 48px; border-top: 1px solid var(--text-main); border-bottom: 1px solid var(--line-dark); }
+.output-card { padding: 34px 40px 38px 0; }
+.output-card + .output-card { padding-right: 0; padding-left: 40px; border-left: 1px solid var(--line-dark); }
+.output-index { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .08em; }
+.output-title { margin-top: 40px; font-size: 26px; line-height: 1.18; font-weight: 400; }
+.output-copy { margin-top: 18px; color: var(--text-secondary); font-size: 17px; line-height: 1.55; font-weight: 300; }
+
+/* Evidence / product intelligence */
+.evidence-card { margin-top: 44px; padding: 30px 0 6px; border-top: 1px solid var(--text-main); }
+.evidence-head { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: end; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+.sku { font-size: 28px; line-height: 1.2; font-weight: 500; }
+.sample { color: var(--text-muted); font-size: 14px; line-height: 1.45; text-align: right; }
+.funnel { display: grid; grid-template-columns: repeat(3, 1fr); padding: 32px 0; border-bottom: 1px solid var(--line); }
+.funnel-item { padding: 0 24px; border-right: 1px solid var(--line); }
+.funnel-item:first-child { padding-left: 0; }
+.funnel-item:last-child { padding-right: 0; border-right: 0; }
+.funnel-number { color: var(--accent); font-size: clamp(44px, 7vw, 70px); line-height: 1; font-weight: 300; letter-spacing: -.05em; }
+.funnel-label { margin-top: 12px; font-size: 13px; font-weight: 500; }
+.mismatch-table { margin-top: 32px; width: 100%; }
+.mismatch-row { display: grid; grid-template-columns: 1fr 90px 120px; align-items: center; padding: 18px 0; border-bottom: 1px solid rgba(0, 0, 0, .08); }
+.mismatch-name { color: var(--text-secondary); font-size: 20px; font-weight: 300; }
+.mismatch-percent { font-size: 20px; font-weight: 400; font-variant-numeric: tabular-nums; }
+.mismatch-meta { color: rgba(0, 0, 0, .45); font-size: 14px; font-weight: 300; text-align: right; }
+.mismatch-footer { margin-top: 32px; color: rgba(0, 0, 0, .55); font-size: 15px; font-weight: 300; }
+
+/* PILOT */
+.pilot-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 48px; border-top: 1px solid var(--text-main); border-bottom: 1px solid var(--line-dark); }
+.pilot-step { min-height: 240px; padding: 30px 28px; border-right: 1px solid var(--line); }
+.pilot-step:first-child { padding-left: 0; }
+.pilot-step:last-child { padding-right: 0; border-right: 0; }
+.pilot-number { color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .12em; }
+.pilot-title { margin-top: 44px; font-size: 20px; line-height: 1.3; font-weight: 500; }
+.pilot-copy { margin-top: 12px; color: var(--text-secondary); font-size: 15px; line-height: 1.55; font-weight: 300; }
+
+/* CURRENT RESEARCH — retained visual character */
+.research-card { width: 100%; }
+.research-brands { margin-top: 38px; color: var(--accent); font-size: 19px; line-height: 1.5; font-weight: 400; letter-spacing: -.02em; }
+.research-line { width: 100%; height: 1px; margin: 34px 0 44px; background: var(--accent); }
+.research-findings { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+.research-finding { padding: 0 42px 8px; }
+.research-finding:first-child { padding-left: 0; }
+.research-finding:last-child { padding-right: 0; }
+.research-finding + .research-finding { border-left: 1px solid rgba(104, 18, 28, .7); }
+.research-number { color: var(--accent); font-size: clamp(86px, 11vw, 132px); line-height: .9; font-weight: 300; letter-spacing: -.07em; white-space: nowrap; }
+.research-number span { margin-left: 4px; font-size: .45em; font-weight: 300; letter-spacing: -.04em; }
+.research-description { margin-top: 28px; color: var(--text-main); font-size: 19px; line-height: 1.48; font-weight: 400; letter-spacing: -.025em; }
+.research-meta { color: var(--text-main); font-size: 20px; line-height: 1.55; font-weight: 400; letter-spacing: -.02em; }
+.research-report-link { display: inline-block; margin-top: 34px; padding-bottom: 3px; color: var(--text-main); font-size: 16px; font-weight: 300; text-decoration: none; border-bottom: 1px solid var(--text-main); transition: opacity .25s ease; }
+.research-report-link:hover { opacity: .55; }
+
+/* OWNERSHIP */
+.ownership { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; padding: 28px 0; border-top: 1px solid var(--text-main); border-bottom: 1px solid var(--line-dark); }
+.ownership-title { font-size: 18px; font-weight: 500; }
+.ownership-copy { color: var(--text-secondary); font-size: 15px; line-height: 1.6; font-weight: 300; }
+
+.cta a { display: inline-block; margin-right: 28px; padding-bottom: 3px; font-size: 20px; font-weight: 300; text-decoration: none; border-bottom: 1px solid #000; }
+
+@media (min-width: 1200px) {
+  .section.shift { margin-left: 25%; }
 }
-  
-.hero h1 {
-  font-size: 28px;
-  line-height: 1.5;
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .title, .title::after { animation: none; opacity: 1; transform: none; filter: none; }
+  .section { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 760px) {
+  .systems-grid { grid-template-columns: 1fr 1fr; }
+  .system-card { border-bottom: 1px solid var(--line); }
+  .system-card:nth-child(2) { padding-right: 0; border-right: 0; }
+  .system-card:nth-child(3) { padding-left: 0; }
+  .system-card:nth-child(n+3) { border-bottom: 0; }
+  .architecture-flow { grid-template-columns: 1fr; gap: 10px; }
+  .architecture-arrow { height: 24px; transform: rotate(90deg); }
+  .foundation { display: block; margin-top: 10px; }
+  .outputs-arch { margin: 10px 0 0; }
+  .pipeline-track { grid-template-columns: repeat(3, 1fr); row-gap: 34px; }
+  .pipeline-track::before { display: none; }
+  .pilot-grid { grid-template-columns: 1fr; }
+  .pilot-step, .pilot-step:first-child, .pilot-step:last-child { min-height: 0; padding: 28px 0 32px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .pilot-step:last-child { border-bottom: 0; }
+  .pilot-title { margin-top: 24px; }
+}
+
+@media (max-width: 600px) {
+  .header { padding: 160px 20px 10px; }
+  .title { font-size: clamp(58px, 18vw, 600px); font-weight: 600; }
+  .wrapper { padding-right: 20px; padding-left: 20px; }
+  .section { margin-bottom: 90px; }
+  .section.shift { margin-bottom: 110px; }
+  .divider { margin: 58px 0; }
+  .title-section { margin-bottom: 38px; font-size: clamp(42px, 13vw, 58px); overflow-wrap: anywhere; }
+  .hero h1, .big { font-size: 24px; }
+  .hero p, .text, .list div { font-size: 19px; }
+  .systems-grid { grid-template-columns: 1fr; }
+  .system-card, .system-card:first-child, .system-card:nth-child(3), .system-card:last-child { min-height: 0; padding: 26px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .system-card:last-child { border-bottom: 0; }
+  .system-name { margin-bottom: 24px; }
+  .outputs-arch, .two-outputs, .evidence-head, .funnel, .ownership { grid-template-columns: 1fr; }
+  .output-card, .output-card + .output-card { padding: 30px 0; border-left: 0; }
+  .output-card + .output-card { border-top: 1px solid var(--line); }
+  .output-title { margin-top: 25px; }
+  .sample { margin-top: 16px; text-align: left; }
+  .funnel { padding: 0; }
+  .funnel-item, .funnel-item:first-child, .funnel-item:last-child { padding: 26px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .funnel-item:last-child { border-bottom: 0; }
+  .mismatch-row { grid-template-columns: 1fr 55px; gap: 10px; }
+  .mismatch-name, .mismatch-percent { font-size: 17px; }
+  .mismatch-meta { display: none; }
+  .research-brands { margin-top: 28px; font-size: 16px; line-height: 1.7; }
+  .research-line { margin: 28px 0 20px; }
+  .research-findings { grid-template-columns: 1fr; }
+  .research-finding, .research-finding:first-child, .research-finding:last-child { padding: 32px 0 38px; }
+  .research-finding + .research-finding { border-top: 1px solid rgba(104, 18, 28, .5); border-left: 0; }
+  .research-number { font-size: clamp(88px, 26vw, 120px); }
+  .research-description { max-width: 420px; margin-top: 20px; font-size: 19px; }
+  .research-meta { font-size: 18px; }
+  .ownership { gap: 14px; }
+  .cta a { margin: 0 22px 16px 0; }
+}
+
+/* REFINED VISUAL SYSTEM
+   Three type sizes only: title / main / text. */
+:root {
+  --type-title: clamp(48px, 6.6vw, 72px);
+  --type-main: clamp(22px, 2.8vw, 28px);
+  --type-text: 16px;
+  --grey: #dfe1e1;
+  --grey-deep: #6f7478;
+  --blue: #1769aa;
+  --blue-deep: #152738;
+  --black: #111214;
+  --white: #ffffff;
+  --burgundy: #68121c;
+}
+
+body { background: #f7f6f3; }
+.header, .wrapper { background: #f7f6f3; }
+.header { padding-top: 64px; }
+.header-inner, .wrapper { max-width: 980px; }
+.wrapper { padding-right: 32px; padding-left: 32px; }
+
+/* Exactly three typographic scales */
+.title,
+.title-section,
+.research-number,
+.funnel-number {
+  font-size: var(--type-title);
+}
+
+.hero h1,
+.big,
+.output-title,
+.sku,
+.pilot-title,
+.ownership-title,
+.box-title {
+  font-size: var(--type-main);
+}
+
+.hero p,
+.text,
+.list div,
+.eyebrow,
+.note,
+.visual-label,
+.system-name,
+.system-key,
+.system-value,
+.box-kicker,
+.box-copy,
+.foundation-box,
+.output-arch strong,
+.output-arch span,
+.architecture-arrow,
+.pipeline-dot,
+.pipeline-name,
+.pipeline-copy,
+.output-index,
+.output-copy,
+.sample,
+.funnel-label,
+.mismatch-name,
+.mismatch-percent,
+.mismatch-meta,
+.mismatch-footer,
+.pilot-number,
+.pilot-copy,
+.research-brands,
+.research-description,
+.research-meta,
+.research-report-link,
+.ownership-copy,
+.cta a {
+  font-size: var(--type-text);
+}
+
+.title {
+  color: var(--black);
+  line-height: .86;
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+.section { margin-bottom: 148px; }
+.section.shift { margin-bottom: 172px; }
+.divider { margin: 0 0 148px; background: rgba(17, 18, 20, .1); }
+.title-section { margin-bottom: 64px; line-height: .98; letter-spacing: -.055em; }
+.hero { padding-top: 34px; }
+.hero h1, .big { line-height: 1.25; letter-spacing: -.025em; }
+.hero p, .text, .list div { line-height: 1.62; }
+.hero p { max-width: 760px; margin-top: 44px; }
+.text { max-width: 780px; }
+.bold { font-weight: 500; }
+.list { margin-top: 36px; }
+.list div { margin-bottom: 8px; }
+
+/* Shared blocks */
+.visual,
+.two-outputs,
+.evidence-card,
+.pilot-grid,
+.ownership {
+  margin-top: 64px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 2px;
+}
+
+.visual-label {
+  padding: 22px 26px;
   font-weight: 500;
+  letter-spacing: .08em;
+}
+
+/* Systems: restrained sequence of material colours */
+.systems-grid { gap: 0; border: 0; }
+.system-card,
+.system-card:first-child,
+.system-card:last-child {
+  min-height: 310px;
+  padding: 30px 28px;
+  border: 0;
+}
+.visual:has(.systems-grid) { background: var(--grey); }
+.visual:has(.systems-grid) .visual-label { color: var(--black); }
+.system-card:nth-child(1) { background: #dfe1e1; color: var(--black); }
+.system-card:nth-child(2) { background: #89939c; color: var(--white); }
+.system-card:nth-child(3) { background: var(--blue); color: var(--white); }
+.system-card:nth-child(4) { background: var(--burgundy); color: var(--white); }
+.system-card .system-key,
+.system-card.dti .system-key { color: currentColor; opacity: .58; }
+.system-card.dti { color: var(--white); }
+.system-name { margin-bottom: 54px; font-weight: 600; letter-spacing: .035em; }
+.system-value { line-height: 1.55; }
+
+/* Architecture: one dark, composed field */
+.visual.architecture { padding: 0; background: var(--black); color: var(--white); }
+.architecture .visual-label { color: rgba(255,255,255,.58); }
+.architecture-flow { padding: 12px 26px 0; grid-template-columns: 1fr 52px 1fr 52px 1.35fr; }
+.architecture-box {
+  min-height: 188px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.035);
+}
+.architecture-box.core { border-color: transparent; background: var(--blue); }
+.architecture-box .box-kicker,
+.architecture-box.core .box-kicker { color: rgba(255,255,255,.56); }
+.box-title { margin-top: 38px; line-height: 1.15; }
+.box-copy { color: rgba(255,255,255,.62); line-height: 1.55; }
+.architecture-arrow { color: rgba(255,255,255,.38); }
+.foundation { padding: 0 26px; grid-template-columns: 1fr 52px 2.35fr; }
+.foundation-box { margin-top: 12px; padding: 18px 22px; border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.48); }
+.outputs-arch { gap: 0; margin: 18px 26px 26px calc(40% + 18px); }
+.output-arch { min-height: 126px; padding: 24px; background: var(--white); color: var(--black); }
+.output-arch + .output-arch { background: var(--burgundy); color: var(--white); }
+.output-arch strong { margin-bottom: 10px; }
+.output-arch span { color: inherit; opacity: .68; line-height: 1.5; }
+
+/* Pipeline */
+.visual.pipeline { padding: 0 0 42px; background: var(--blue-deep); color: var(--white); }
+.pipeline .visual-label { color: rgba(255,255,255,.55); }
+.pipeline-track { padding: 24px 24px 0; }
+.pipeline-track::before { top: 42px; background: rgba(255,255,255,.2); }
+.pipeline-dot { width: 38px; height: 38px; margin-bottom: 24px; border-color: rgba(255,255,255,.38); background: var(--blue-deep); color: var(--white); }
+.pipeline-step:last-child .pipeline-dot { border-color: var(--white); background: var(--white); color: var(--blue-deep); }
+.pipeline-name { font-weight: 500; }
+.pipeline-copy { margin-top: 12px; color: rgba(255,255,255,.52); line-height: 1.45; }
+
+/* Two outputs */
+.two-outputs { background: var(--black); color: var(--white); }
+.output-card,
+.output-card + .output-card { min-height: 390px; padding: 42px; border: 0; }
+.output-card + .output-card { background: var(--blue); }
+.output-index { color: rgba(255,255,255,.52); }
+.output-title { margin-top: 86px; line-height: 1.15; }
+.output-copy { max-width: 350px; margin-top: 28px; color: rgba(255,255,255,.68); line-height: 1.65; }
+
+/* Product evidence */
+.evidence-card { padding: 0; background: var(--grey); }
+.evidence-head { padding: 34px; border: 0; }
+.sample { color: rgba(17,18,20,.55); }
+.funnel { padding: 0; border: 0; }
+.funnel-item,
+.funnel-item:first-child,
+.funnel-item:last-child { min-height: 230px; padding: 32px; border: 0; }
+.funnel-item:nth-child(1) { background: #bcc3c8; }
+.funnel-item:nth-child(2) { background: var(--blue); color: var(--white); }
+.funnel-item:nth-child(3) { background: var(--burgundy); color: var(--white); }
+.funnel-number { color: inherit; font-weight: 300; }
+.evidence-card > .big,
+.evidence-card > .text,
+.evidence-card > .mismatch-footer,
+.mismatch-table { margin-right: 34px; margin-left: 34px; }
+.mismatch-table { width: auto; }
+.mismatch-row { padding: 22px 0; border-color: rgba(17,18,20,.12); }
+.evidence-card > .mismatch-footer { padding-bottom: 34px; }
+
+/* Pilot */
+.pilot-grid { background: var(--grey); }
+.pilot-step,
+.pilot-step:first-child,
+.pilot-step:last-child { min-height: 350px; padding: 36px 32px; border: 0; }
+.pilot-step:nth-child(2) { background: var(--blue); color: var(--white); }
+.pilot-step:nth-child(3) { background: var(--black); color: var(--white); }
+.pilot-step:nth-child(n+2) .pilot-number { color: rgba(255,255,255,.55); }
+.pilot-title { margin-top: 70px; line-height: 1.22; }
+.pilot-copy { margin-top: 22px; color: inherit; opacity: .65; line-height: 1.6; }
+
+/* Research */
+.research-card { padding: 54px; background: var(--white); box-shadow: 0 24px 80px rgba(17,18,20,.07); }
+.research-brands { color: var(--burgundy); line-height: 1.6; }
+.research-line { background: var(--burgundy); }
+.research-finding { padding-right: 34px; padding-left: 34px; }
+.research-number { color: var(--burgundy); }
+.research-description { line-height: 1.55; }
+
+/* Ownership */
+.ownership { gap: 0; padding: 0; background: var(--black); color: var(--white); }
+.ownership-title,
+.ownership-copy { padding: 38px; }
+.ownership-title { min-height: 160px; display: flex; align-items: flex-end; line-height: 1.2; }
+.ownership-copy { color: rgba(255,255,255,.66); line-height: 1.65; }
+.ownership-title:nth-child(3),
+.ownership-copy:nth-child(4) { background: var(--burgundy); }
+
+.research-report-link { letter-spacing: 0; }
+.cta a { line-height: 1.4; }
+
+@media (max-width: 760px) {
+  .architecture-flow { grid-template-columns: 1fr; padding: 8px 22px 0; }
+  .foundation { padding: 0 22px; }
+  .outputs-arch { margin: 14px 22px 22px; }
+  .pipeline-track::before { display: none; }
+  .system-card:nth-child(3) { padding-left: 28px; }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --type-title: clamp(42px, 13vw, 56px);
+    --type-main: 23px;
+    --type-text: 16px;
+  }
+  .header { padding: 130px 20px 10px; }
+  .wrapper { padding-right: 20px; padding-left: 20px; }
+  .section, .section.shift { margin-bottom: 108px; }
+  .divider { margin-bottom: 108px; }
+  .title-section { margin-bottom: 48px; }
+  .systems-grid { grid-template-columns: 1fr; }
+  .system-card,
+  .system-card:first-child,
+  .system-card:nth-child(3),
+  .system-card:last-child { min-height: 250px; padding: 28px; border: 0; }
+  .architecture-box { min-height: 160px; }
+  .outputs-arch { grid-template-columns: 1fr; }
+  .pipeline-track { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+  .two-outputs { grid-template-columns: 1fr; }
+  .output-card, .output-card + .output-card { min-height: 340px; padding: 34px; }
+  .output-title { margin-top: 60px; }
+  .funnel { grid-template-columns: 1fr; }
+  .funnel-item,
+  .funnel-item:first-child,
+  .funnel-item:last-child { min-height: 190px; padding: 30px; border: 0; }
+  .evidence-head { grid-template-columns: 1fr; }
+  .pilot-grid { grid-template-columns: 1fr; }
+  .pilot-step,
+  .pilot-step:first-child,
+  .pilot-step:last-child { min-height: 300px; padding: 32px; border: 0; }
+  .research-card { padding: 34px 26px; }
+  .research-finding,
+  .research-finding:first-child,
+  .research-finding:last-child { padding: 32px 0 38px; }
+  .ownership { grid-template-columns: 1fr; }
+  .ownership-title, .ownership-copy { padding: 32px; }
+  .ownership-title { min-height: 130px; }
+}
+
+/* EDITORIAL SYSTEM — derived from CURRENT RESEARCH */
+:root {
+  --editorial-paper: #ffffff;
+  --editorial-ink: #111214;
+  --editorial-muted: #5f6265;
+  --editorial-line: rgba(104, 18, 28, .72);
+  --editorial-hairline: rgba(17, 18, 20, .11);
+  --editorial-shadow: 0 22px 70px rgba(17, 18, 20, .065);
+}
+
+/* Hero becomes a complete opening composition */
+.hero {
+  min-height: min(720px, calc(100vh - 130px));
+  padding: 76px 0 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-kicker,
+.hero-axis span {
+  font-size: var(--type-text);
+}
+
+.hero-kicker {
+  margin-bottom: 36px;
+  color: var(--burgundy);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 900px;
+  font-size: var(--type-title);
+  line-height: .98;
+  font-weight: 300;
+  letter-spacing: -.055em;
 }
 
 .hero p {
-  font-size: 22px;
-  line-height: 1.4;
-  font-weight: 300;
-  margin-top: 36px;
-  color: var(--text-secondary);
-}
-
-/* ТОПИКИ */
-.title-section {
-  font-size: clamp(48px, 5vw, 72px);
-  margin-bottom: 52px;
-  letter-spacing: 0.01em;
-  font-weight: 300;
-}
-
-/* ОСНОВНОЙ ТЕКСТ */
-.text {
-  font-size: 22px;
-  line-height: 1.4;
-  font-weight: 300;
-  margin-top: 12px;
-  color: var(--text-secondary);
-}
-
-.big {
-  font-size: 28px;
-  line-height: 1.4;
+  max-width: 620px;
+  margin-top: 42px;
+  color: var(--editorial-ink);
+  font-size: var(--type-main);
+  line-height: 1.38;
   font-weight: 400;
-  letter-spacing: 0.01em;
 }
 
-  .big + .text {
-  margin-top: 16px;
-}
-  
-.bold {
-  color: var(--text-main);
-  font-weight: 600;
-}
-
-/* LIST */
-.list {
-  margin-top: 28px;
-}
-
-.list div {
-  font-size: 22px;
-  line-height: 1.6;
-  opacity: 1;
+.hero-statement {
+  max-width: 720px;
+  margin: 34px 0 0 auto;
+  padding-top: 30px;
+  border-top: 1px solid var(--editorial-line);
+  color: var(--editorial-muted);
+  font-size: var(--type-main);
+  line-height: 1.5;
   font-weight: 300;
-  margin-left: 0px;
-  margin-bottom: 12px;
-  color: var(--text-secondary);
 }
 
-/* HOW GRID */
-
-.how-section {
-  font-size: 22px;
-  line-height: 1.4;
-  font-weight: 300;
-  color: var(--text-secondary);
-}
-
-.how-grid {
+.hero-axis {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin: 32px 0;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 70px;
+  border-top: 1px solid var(--editorial-hairline);
 }
 
-.how-grid {
+.hero-axis span {
+  padding: 16px 18px 0 0;
+  color: var(--editorial-muted);
+  font-weight: 400;
+}
+
+.hero-axis span + span { padding-left: 18px; border-left: 1px solid var(--editorial-hairline); }
+
+/* WHAT WE DO can breathe beyond the text column */
+.section-wide {
   position: relative;
+  width: 1180px;
+  left: -100px;
 }
 
-.how-grid::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(0,0,0,0.08);
-}
-  
-.how-column-title {
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 16px;
+.section-wide > .title-section,
+.section-wide > .text {
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.how-item {
-  font-size: 22px;
-  line-height: 1.6;
-  font-weight: 300;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
+/* Every graphic becomes an editorial plate */
+.visual,
+.two-outputs,
+.evidence-card,
+.pilot-grid,
+.ownership,
+.research-card {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  box-shadow: var(--editorial-shadow);
+}
+
+.visual,
+.two-outputs,
+.evidence-card,
+.pilot-grid,
+.ownership {
+  border-top: 1px solid var(--editorial-line);
+}
+
+.visual-label {
+  color: var(--burgundy) !important;
+  background: transparent;
+  border-bottom: 1px solid var(--editorial-hairline);
+}
+
+/* Systems */
+.visual:has(.systems-grid) { background: var(--editorial-paper); }
+.system-card,
+.system-card:first-child,
+.system-card:nth-child(1),
+.system-card:nth-child(2),
+.system-card:nth-child(3),
+.system-card:nth-child(4),
+.system-card.dti,
+.system-card:last-child {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  border-right: 1px solid var(--editorial-hairline);
+}
+.system-card:last-child { border-right: 0; }
+.system-card.dti { background: #f5f4f1; }
+.system-card.dti .system-name { color: var(--burgundy); }
+.system-card .system-key,
+.system-card.dti .system-key { color: var(--editorial-muted); opacity: 1; }
+
+/* Architecture */
+.visual.architecture {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+}
+.architecture-flow { padding: 24px 34px 0; }
+.architecture-box,
+.architecture-box.core {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  border: 1px solid var(--editorial-hairline);
+}
+.architecture-box.core { border-color: var(--editorial-line); }
+.architecture-box .box-kicker,
+.architecture-box.core .box-kicker { color: var(--burgundy); }
+.architecture .box-copy { color: var(--editorial-muted); }
+.architecture-arrow { color: rgba(104, 18, 28, .52); }
+.foundation { padding: 0 34px; }
+.foundation-box {
+  border-color: var(--editorial-hairline);
+  color: var(--editorial-muted);
+  background: #f7f6f3;
+}
+.outputs-arch { margin: 18px 34px 34px calc(40% + 22px); }
+.output-arch,
+.output-arch + .output-arch {
+  background: #f5f4f1;
+  color: var(--editorial-ink);
+  border-top: 1px solid var(--editorial-line);
+}
+.output-arch + .output-arch { background: var(--editorial-paper); border-left: 1px solid var(--editorial-hairline); }
+
+/* Decision pipeline */
+.visual.pipeline {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+}
+.pipeline-track::before { background: var(--editorial-line); }
+.pipeline-dot,
+.pipeline-step:last-child .pipeline-dot {
+  border-color: var(--editorial-line);
+  background: var(--editorial-paper);
+  color: var(--burgundy);
+}
+.pipeline-step:last-child .pipeline-dot { background: var(--burgundy); color: var(--white); }
+.pipeline-copy { color: var(--editorial-muted); }
+
+/* Outputs */
+.two-outputs { background: var(--editorial-paper); color: var(--editorial-ink); }
+.output-card,
+.output-card + .output-card {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+}
+.output-card + .output-card { border-left: 1px solid var(--editorial-hairline); }
+.output-index { color: var(--burgundy); }
+.output-copy { color: var(--editorial-muted); }
+
+/* Evidence */
+.evidence-card { background: var(--editorial-paper); }
+.funnel-item,
+.funnel-item:first-child,
+.funnel-item:nth-child(1),
+.funnel-item:nth-child(2),
+.funnel-item:nth-child(3),
+.funnel-item:last-child {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  border-right: 1px solid var(--editorial-hairline);
+  border-top: 1px solid var(--editorial-hairline);
+}
+.funnel-item:last-child { border-right: 0; }
+.funnel-item:nth-child(2) .funnel-number,
+.funnel-item:nth-child(3) .funnel-number { color: var(--burgundy); }
+
+/* Pilot */
+.pilot-grid { background: var(--editorial-paper); }
+.pilot-step,
+.pilot-step:first-child,
+.pilot-step:nth-child(2),
+.pilot-step:nth-child(3),
+.pilot-step:last-child {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  border-right: 1px solid var(--editorial-hairline);
+}
+.pilot-step:last-child { border-right: 0; }
+.pilot-step:nth-child(n+2) .pilot-number,
+.pilot-number { color: var(--burgundy); }
+.pilot-copy { color: var(--editorial-muted); opacity: 1; }
+
+/* Ownership */
+.ownership { background: var(--editorial-paper); color: var(--editorial-ink); }
+.ownership-title,
+.ownership-copy,
+.ownership-title:nth-child(3),
+.ownership-copy:nth-child(4) {
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+}
+.ownership-title { color: var(--burgundy); border-right: 1px solid var(--editorial-hairline); }
+.ownership-copy { color: var(--editorial-muted); border-bottom: 1px solid var(--editorial-hairline); }
+.ownership-copy:last-child { border-bottom: 0; }
+
+@media (max-width: 1244px) {
+  .section-wide { width: 100%; left: 0; }
+  .section-wide > .title-section,
+  .section-wide > .text { width: 100%; }
+}
+
+@media (max-width: 760px) {
+  .hero { min-height: auto; padding: 72px 0 20px; }
+  .hero-statement { margin-left: 0; }
+  .hero-axis { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .hero-axis span:nth-child(3) { padding-left: 0; border-left: 0; }
+  .system-card,
+  .system-card:first-child,
+  .system-card:nth-child(2),
+  .system-card:nth-child(3),
+  .system-card:nth-child(4),
+  .system-card:last-child { border-right: 0; border-bottom: 1px solid var(--editorial-hairline); }
+  .system-card:last-child { border-bottom: 0; }
+  .architecture-flow { padding: 20px 22px 0; }
+  .foundation { padding: 0 22px; }
+  .outputs-arch { margin: 14px 22px 22px; }
+  .pilot-step,
+  .pilot-step:first-child,
+  .pilot-step:nth-child(2),
+  .pilot-step:nth-child(3),
+  .pilot-step:last-child { border-right: 0; border-bottom: 1px solid var(--editorial-hairline); }
+  .pilot-step:last-child { border-bottom: 0; }
 }
 
 @media (max-width: 600px) {
-  .how-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .how-grid::after {
-    display: none;
-  }
-}
-  
-/* MISMATCH TABLE */
-
-.mismatch-table {
-  margin-top: 32px;
-  width: 100%;
-}
-
-.mismatch-row {
-  display: grid;
-  grid-template-columns: 1fr 90px 160px;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  .hero-kicker { margin-bottom: 28px; }
+  .hero h1 { overflow-wrap: normal; }
+  .hero p { margin-top: 32px; }
+  .hero-statement { margin-top: 30px; padding-top: 24px; }
+  .hero-axis { margin-top: 52px; }
+  .output-card + .output-card { border-left: 0; border-top: 1px solid var(--editorial-hairline); }
+  .funnel-item,
+  .funnel-item:first-child,
+  .funnel-item:nth-child(1),
+  .funnel-item:nth-child(2),
+  .funnel-item:nth-child(3),
+  .funnel-item:last-child { border-right: 0; border-bottom: 1px solid var(--editorial-hairline); }
+  .funnel-item:last-child { border-bottom: 0; }
+  .ownership-title { border-right: 0; border-bottom: 1px solid var(--editorial-hairline); }
 }
 
-.mismatch-row:last-child {
-  border-bottom: none;
+/* FINAL LAYOUT ADJUSTMENTS */
+:root { --type-text: 18px; }
+
+html,
+body,
+.wrapper { background: #ffffff; }
+
+.wrapper { padding-top: 0; }
+
+.hero {
+  min-height: min(860px, 100vh);
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
-.mismatch-name {
-  font-size: 22px;
-  font-weight: 300;
-  color: var(--text-secondary);
+.hero-kicker {
+  margin-bottom: 52px;
+  font-weight: 600;
+  letter-spacing: .04em;
 }
 
-.mismatch-percent {
-  font-size: 22px;
+.hero h1 {
+  font-weight: 500;
+  letter-spacing: -.06em;
+}
+
+.hero p {
+  max-width: 690px;
+  margin-top: 50px;
   font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  color: var(--text-main);
 }
 
-.mismatch-meta {
-  font-size: 16px;
-  font-weight: 300;
-  color: rgba(0,0,0,0.45);
-}
-  
-.mismatch-footer {
-  margin-top: 32px;
-  font-size: 16px;
-  font-weight: 300;
-  color: rgba(0,0,0,0.55);
-}
-  
-/* DIVIDER */
-.divider {
-  height: 1px;
-  background: rgba(0,0,0,0.05);
-  margin: 80px 0;
+.hero-statement {
+  max-width: 720px;
+  margin-top: 40px;
 }
 
-/* CTA */
-.cta {
+/* Sections containing a designed block use the wider editorial canvas. */
+.section:has(> .visual),
+.section:has(> .two-outputs),
+.section:has(> .evidence-card),
+.section:has(> .pilot-grid),
+.section:has(> .research-card),
+.section:has(> .ownership),
+.section-wide {
+  position: relative;
+  left: -100px;
+  width: 1180px;
+  margin-left: 0;
+}
+
+/* Keep introductory copy aligned to the main reading column inside wide sections. */
+.section:has(> .visual) > .title-section,
+.section:has(> .visual) > .text,
+.section:has(> .visual) > .big,
+.section:has(> .two-outputs) > .title-section,
+.section:has(> .two-outputs) > .text,
+.section:has(> .evidence-card) > .title-section,
+.section:has(> .evidence-card) > .text,
+.section:has(> .pilot-grid) > .title-section,
+.section:has(> .pilot-grid) > .text,
+.section:has(> .pilot-grid) > .big,
+.section:has(> .pilot-grid) > .research-report-link,
+.section:has(> .research-card) > .title-section,
+.section:has(> .ownership) > .title-section,
+.section-wide > .title-section,
+.section-wide > .text {
+  width: 980px;
+  max-width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section:has(> .pilot-grid) > .research-report-link {
+  display: table;
+}
+
+/* Text-only sections form the quieter, right-shifted rhythm. */
+@media (min-width: 1200px) {
+  .section.shift:not(:has(> .visual)):not(:has(> .two-outputs)):not(:has(> .evidence-card)):not(:has(> .pilot-grid)):not(:has(> .research-card)):not(:has(> .ownership)) {
+    width: 75%;
+    margin-left: 25%;
+  }
+}
+
+@media (max-width: 1244px) {
+  .section:has(> .visual),
+  .section:has(> .two-outputs),
+  .section:has(> .evidence-card),
+  .section:has(> .pilot-grid),
+  .section:has(> .research-card),
+  .section:has(> .ownership),
+  .section-wide {
+    left: 0;
+    width: 100%;
+  }
+
+  .section:has(> .visual) > .title-section,
+  .section:has(> .visual) > .text,
+  .section:has(> .visual) > .big,
+  .section:has(> .two-outputs) > .title-section,
+  .section:has(> .two-outputs) > .text,
+  .section:has(> .evidence-card) > .title-section,
+  .section:has(> .evidence-card) > .text,
+  .section:has(> .pilot-grid) > .title-section,
+  .section:has(> .pilot-grid) > .text,
+  .section:has(> .pilot-grid) > .big,
+  .section:has(> .pilot-grid) > .research-report-link,
+  .section:has(> .research-card) > .title-section,
+  .section:has(> .ownership) > .title-section,
+  .section-wide > .title-section,
+  .section-wide > .text {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  :root { --type-text: 17px; }
+  .hero { min-height: auto; padding: 90px 0 70px; }
+  .hero-kicker { margin-bottom: 38px; }
+  .hero h1 { font-weight: 500; }
+}
+
+/* TYPOGRAPHY AND SECTION RULES */
+.hero-statement {
+  font-size: var(--type-text);
+  line-height: 1.65;
+}
+
+/* All text-only sections are shifted; block sections stay on the wide grid. */
+@media (min-width: 1200px) {
+  .section:not(.hero):not(:has(> .visual)):not(:has(> .two-outputs)):not(:has(> .evidence-card)):not(:has(> .pilot-grid)):not(:has(> .research-card)):not(:has(> .ownership)) {
+    width: 75%;
+    margin-left: 25%;
+  }
+
+  .section:has(> .visual),
+  .section:has(> .two-outputs),
+  .section:has(> .evidence-card),
+  .section:has(> .pilot-grid),
+  .section:has(> .research-card),
+  .section:has(> .ownership),
+  .section-wide {
+    left: -100px;
+    width: 1180px;
+    margin-left: 0;
+  }
+}
+
+/* Block and table titles use the Highlighted style. */
+.visual-label,
+.output-title,
+.pilot-title,
+.ownership-title,
+.evidence-card > .big,
+.sku {
+  font-size: var(--type-main);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -.025em;
+  text-transform: none;
+}
+
+.visual-label {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  letter-spacing: -.025em;
+}
+
+.output-title,
+.pilot-title,
+.ownership-title,
+.sku {
+  color: var(--editorial-ink);
+}
+
+@media (max-width: 1199px) {
+  .section:not(.hero),
+  .section.shift:not(.hero) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* CARD BLOCK WIDTH */
+@media (min-width: 965px) {
+  .section:has(> .visual),
+  .section:has(> .two-outputs),
+  .section:has(> .evidence-card),
+  .section:has(> .pilot-grid),
+  .section:has(> .research-card),
+  .section:has(> .ownership),
+  .section-wide {
+    left: 0;
+    width: 100%;
+  }
+
+  .section:has(> .visual) > .title-section,
+  .section:has(> .visual) > .text,
+  .section:has(> .visual) > .big,
+  .section:has(> .two-outputs) > .title-section,
+  .section:has(> .two-outputs) > .text,
+  .section:has(> .evidence-card) > .title-section,
+  .section:has(> .evidence-card) > .text,
+  .section:has(> .pilot-grid) > .title-section,
+  .section:has(> .pilot-grid) > .text,
+  .section:has(> .pilot-grid) > .big,
+  .section:has(> .research-card) > .title-section,
+  .section:has(> .ownership) > .title-section,
+  .section-wide > .title-section,
+  .section-wide > .text {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .visual,
+  .two-outputs,
+  .evidence-card,
+  .pilot-grid,
+  .research-card,
+  .ownership {
+    width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 964px) {
+  .visual,
+  .two-outputs,
+  .evidence-card,
+  .pilot-grid,
+  .research-card,
+  .ownership {
+    width: 100%;
+  }
+}
+
+/* LINK WIDTH AND EDITORIAL SECTION RHYTHM */
+.section:has(> .pilot-grid) > .research-report-link {
+  display: inline-block;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-left: max(0px, calc((100% - 900px) / 2));
+}
+
+.wrapper { counter-reset: editorial-section; }
+
+.title-section {
+  counter-increment: editorial-section;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 18px;
+}
+
+.title-section::before {
+  content: counter(editorial-section, decimal-leading-zero);
+  padding-top: .48em;
+  color: var(--burgundy);
+  font-size: var(--type-text);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 600px) {
+  .title-section {
+    grid-template-columns: 38px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .title-section::before { padding-top: .4em; }
+
+  .section:has(> .pilot-grid) > .research-report-link { margin-left: 0; }
+}
+
+/* BLUE HIGHLIGHTED TYPE */
+.big.bold,
+.visual-label,
+.output-title,
+.pilot-title,
+.ownership-title,
+.evidence-card > .big,
+.sku {
+  color: var(--blue);
+}
+
+.visual-label { color: var(--blue) !important; }
+
+/* Burgundy remains a precise navigational accent. */
+.hero-kicker,
+.title-section::before,
+.output-index,
+.pilot-number,
+.system-card.dti .system-name {
+  color: var(--burgundy);
+}
+
+.mono-title,
+.big.bold.mono-title,
+.output-title.mono-title,
+.ownership-title.mono-title {
+  color: var(--editorial-ink);
+}
+
+/* CANON-ALIGNED DIAGRAMS */
+.architecture-data-flow {
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr;
+  align-items: stretch;
+  margin: 18px 34px 0;
+}
+
+.architecture-data-flow .architecture-box { min-height: 180px; }
+.architecture-data-flow .trajectory-box { border-color: var(--editorial-line); }
+.architecture-data-flow .intelligence-box { background: #f5f4f1; }
+
+.architecture .foundation {
+  display: block;
+  margin: 18px 34px 0;
+  padding: 0;
+}
+
+.architecture .foundation-box { margin: 0; }
+
+.architecture .outputs-arch {
+  margin: 18px 34px 34px;
+}
+
+.pipeline-track { grid-template-columns: repeat(8, 1fr); }
+.pipeline-track::before { right: 6%; left: 6%; }
+
+.funnel-number {
+  font-size: clamp(38px, 5.2vw, 58px);
+  letter-spacing: -.055em;
+}
+
+.evidence-row {
+  grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr);
+  gap: 30px;
+}
+
+.evidence-row .mismatch-meta {
+  display: block;
+  color: var(--editorial-muted);
+  font-size: var(--type-text);
+  line-height: 1.5;
   text-align: left;
 }
 
-.cta a {
-  font-size: 22px;
-  font-weight: 300;
-  margin: 0 16px;
-  text-decoration: none;
-  border-bottom: 1px solid #000;
-  color: #000;
+.pilot-grid { grid-template-columns: repeat(2, 1fr); }
+.pilot-step,
+.pilot-step:first-child,
+.pilot-step:nth-child(2),
+.pilot-step:nth-child(3),
+.pilot-step:last-child {
+  min-height: 320px;
+  border-right: 1px solid var(--editorial-hairline);
+  border-bottom: 1px solid var(--editorial-hairline);
 }
+.pilot-step:nth-child(2n) { border-right: 0; }
+.pilot-step:nth-last-child(-n+2) { border-bottom: 0; }
 
-@media (min-width: 1200px) {
-  .section.shift {
-    margin-left: 25%;
-  }
-  .cta.shift {
-    margin-left: 25%;
-  }
-}
-
-/* CURRENT RESEARCH */
-
-.research-card {
-  width: 100%;
-}
-
-.research-headline {
-  font-family: 'Open Sans', sans-serif;
-  font-size: clamp(46px, 6vw, 72px);
-  line-height: 1.03;
-  font-weight: 300;
-  letter-spacing: -0.045em;
-  color: var(--text-main);
-  max-width: 880px;
-}
-
-.research-brands {
-  margin-top: 38px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 19px;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: #68121c;
-}
-
-.research-line {
-  width: 100%;
-  height: 1px;
-  background: #68121c;
-  margin: 34px 0 44px;
-}
-
-.research-findings {
+.ownership {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 100%;
+  gap: 0;
 }
 
-.research-finding {
-  padding: 0 42px 8px 42px;
+.ownership-card {
+  min-height: 350px;
+  border-right: 1px solid var(--editorial-hairline);
+}
+.ownership-card:last-child { border-right: 0; }
+.ownership-card .ownership-title,
+.ownership-card .ownership-copy {
+  min-height: 0;
+  padding: 34px;
+  border: 0;
+}
+.ownership-card .ownership-title { align-items: flex-start; padding-bottom: 14px; }
+
+.ownership-note {
+  width: 900px;
+  margin: 24px auto 0;
+  color: var(--editorial-muted);
 }
 
-.research-finding:first-child {
-  padding-left: 0;
-}
-
-.research-finding:last-child {
-  padding-right: 0;
-}
-
-.research-finding + .research-finding {
-  border-left: 1px solid rgba(104, 18, 28, 0.7);
-}
-
-.research-number {
-  font-family: 'Open Sans', sans-serif;
-  font-size: clamp(86px, 11vw, 132px);
-  line-height: 0.9;
-  font-weight: 300;
-  letter-spacing: -0.07em;
-  color: #68121c;
-  white-space: nowrap;
-}
-
-.research-number span {
-  font-size: 0.45em;
-  font-weight: 300;
-  margin-left: 4px;
-  letter-spacing: -0.04em;
-}
-
-.research-description {
-  margin-top: 28px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 19px;
-  line-height: 1.48;
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  color: var(--text-main);
-}
-
-.research-meta {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--text-main);
-}
-
-.research-report-link {
-  display: inline-block;
-  margin-top: 34px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  color: var(--text-main);
-  text-decoration: none;
-  border-bottom: 1px solid var(--text-main);
-  padding-bottom: 3px;
-}
-
-.research-report-link:hover {
-  opacity: 0.55;
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-  .research-headline {
-    font-size: clamp(42px, 12vw, 58px);
-    line-height: 1.03;
+@media (max-width: 760px) {
+  .architecture-data-flow { grid-template-columns: 1fr; margin: 14px 22px 0; }
+  .architecture-data-flow .architecture-arrow { height: 24px; transform: rotate(90deg); }
+  .architecture .foundation { margin: 14px 22px 0; }
+  .architecture .outputs-arch { margin: 14px 22px 22px; }
+  .pipeline-track { grid-template-columns: repeat(2, 1fr); }
+  .evidence-row { grid-template-columns: 1fr; gap: 8px; }
+  .pilot-grid { grid-template-columns: 1fr; }
+  .pilot-step,
+  .pilot-step:first-child,
+  .pilot-step:nth-child(2),
+  .pilot-step:nth-child(3),
+  .pilot-step:last-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--editorial-hairline);
   }
-
-  .research-brands {
-    margin-top: 28px;
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  .research-line {
-    margin: 28px 0 20px;
-  }
-
-  .research-findings {
-    grid-template-columns: 1fr;
-  }
-
-  .research-finding,
-  .research-finding:first-child,
-  .research-finding:last-child {
-    padding: 32px 0 38px 0;
-  }
-
-  .research-finding + .research-finding {
-    border-left: none;
-    border-top: 1px solid rgba(104, 18, 28, 0.5);
-  }
-
-  .research-number {
-    font-size: clamp(88px, 26vw, 120px);
-  }
-
-  .research-description {
-    margin-top: 20px;
-    font-size: 19px;
-    max-width: 420px;
-  }
-
-  .research-meta {
-    font-size: 18px;
-  }
+  .pilot-step:last-child { border-bottom: 0; }
+  .ownership { grid-template-columns: 1fr; }
+  .ownership-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--editorial-hairline); }
+  .ownership-card:last-child { border-bottom: 0; }
+  .ownership-note { width: 100%; }
 }
 
-  
-/* MOBILE */
-@media (max-width: 600px) {
-  .header { padding: 160px 20px 10px 20px;}
-  
-  .title {
-  font-weight: 600;
-  font-size: clamp(58px, 18vw, 600px);
-  }
+/* SECTION NUMBERS REMOVED */
+.title-section {
+  display: block;
+}
+
+.title-section::before {
+  display: none;
+  content: none;
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
-<div class="header">
-  <div class="header-inner">
-    <div class="title">DARIVIA</div>
-  </div>
-</div>
-
-<div class="wrapper">
-
-  <!-- HERO -->
-  <div class="section hero">
-    <h1>
-      Decision Trajectory Intelligence (DTI)<br>
-    </h1>
-
+<main class="wrapper">
+  <section class="section hero">
+    <div class="hero-kicker">DARIVIA</div>
+    <h1>Decision Trajectory<br>Intelligence</h1>
     <p>
-     Modeling how consumers evaluate, reject, and choose products.<br><br>
-     Reveals what happens between product fit and final choice — and turns consumer decision processes into structured intelligence.<br>
+      Modeling how consumers evaluate, reject, and choose products
     </p>
+    <div class="hero-statement">
+      DTI Platform is an Expert-Guided Intelligence system that captures and analyzes consumer-brand interactions, creates a separate Consumer Decision Trajectory, and transforms the resulting knowledge into Commercial and Business Intelligence.
     </div>
-  
+  </section>
+
   <div class="divider"></div>
 
-  <!-- PROBLEM -->
-  <div class="section">
-    <div class="title-section">PROBLEM</div>
-
-    <div class="big bold" style="margin-bottom: 42px;">
-      The outcome doesn't explain the decision.<br>
-    </div> 
-    
+  <section class="section">
+    <h2 class="title-section">PROBLEM</h2>
+    <div class="big bold" style="margin-bottom:42px">The outcome doesn't explain the decision</div>
     <div class="text">
-      Brands see outcomes — sales, conversion, returns, markdowns.<br>
-      But they rarely see the decision process that produced them:
+      Brands see outcomes — sales, conversion, returns, markdowns. But they rarely see the decision process that produced them: why a product entered consideration, why it was rejected, what displaced it, and how context changed the choice.
     </div>
 
-    <div class="list">
-      <div>·&nbsp;&nbsp;Why a product entered consideration.</div>
-      <div>·&nbsp;&nbsp;Why it was rejected.</div>
-      <div>·&nbsp;&nbsp;What displaced it.</div>
-      <div>·&nbsp;&nbsp;Where product-consumer mismatches emerged.</div>
-      <div>·&nbsp;&nbsp;How changing goals, preferences, and context altered the choice.</div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-   <!-- GAP -->
-  <div class="section shift">
-    <div class="title-section">GAP</div>
-
-    <div class="text">
-      Product fit is not consumer choice.<br>
-      A product can fit a customer's needs and still never enter serious consideration.<br><br>
-      Consumer choice emerges from the interaction between:<br><br>
-      <b>Customer</b><br>
-      identity · preferences · parameters<br><br>
-      <b>Mission</b><br>
-      goal · context · constraints<br><br>
-      <b>Product</b><br>
-      attributes · positioning · alternatives<br><br>
-      Traditional customer and product data capture parts of this system.<br>
-      They rarely capture the trajectory of the decision itself.<br>
-    </div>    
-  </div>
-
-  <div class="divider"></div>
-  
-
-   <!-- MARKET SHIFT -->
-  <div class="section">
-    <div class="title-section">MARKET SHIFT</div>
-
-    <div class="text">
-      AI makes decision trajectories observable.<br><br>
-      Product discovery and selection are increasingly mediated by AI.<br><br>
-      For the first time, interactions between consumers, goals, context, products, and alternatives can be observed and structured at scale.<br>
-      This creates a new intelligence layer between traditional customer data and commercial outcomes:<br><br>
-      </div> 
-
-      <div class="big bold" style="margin-bottom: 42px;">
-      Decision Trajectory Intelligence<br>
-      </div>    
-  </div>
-
-  <div class="divider"></div>
-
-  
-  <!-- WHAT WE DO -->
-  <div class="section shift">
-    <div class="title-section">WHAT WE DO</div>
-
-    <div class="text">
-      DTI models consumer decision processes as decision trajectories and turns them into structured intelligence.<br><br>
-      This intelligence can be used to:<br>
-    </div>
-
-    <div class="list">
-      <div>·&nbsp;&nbsp;Understand why products win, lose, or never enter consideration.</div>
-      <div>·&nbsp;&nbsp;Identify consumer-assortment gaps and product overlap.</div>
-      <div>·&nbsp;&nbsp;Detect substitution and competitive displacement.</div>
-      <div>·&nbsp;&nbsp;Model how changing consumer priorities reshape product choice.</div>
-      <div>·&nbsp;&nbsp;Provide AI agents with domain-specific decision expertise.</div>
-    </div>
-    
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- HOW -->
-  <div class="section">
-
-  <div class="title-section">HOW</div>
-
-  <div class="text">
-    DTI models the interaction between:<br><br>
-    <b>Consumer Mind Model</b><br>
-    Who is making the decision.<br><br>
-    <b>Goal & Context</b><br>
-    What the consumer is trying to achieve and under what conditions.<br><br>
-    <b>Product Universe</b><br>
-    What products are available and how they differ.<br><br>
-    <b>Decision Process</b><br>
-    What enters consideration, what is rejected, what survives, and what displaces what.<br><br>
-    <b>Outcome</b><br>
-    What is ultimately chosen - and why.<br><br>
-  </div>
- 
-  <div class="text">
-  Consumer → Mission → Consideration → Comparison → Displacement → Choice</div>
-  </div>
- 
-
-  
-  <div class="divider"></div>
-
-  
-  <!-- DECISION INTELLIGENCE -->
-  <div class="section shift">
-    <div class="title-section">DECISION INTELLIGENCE</div>
-
-    <div class="text">
-    <b>SKU #22338</b><br><br>
-    Based on 1,248 decision trajectories<br><br>
-    <b>Strong Fit</b><br>
-    412 trajectories<br><br>
-    <b>Final Consideration</b><br>
-    96 trajectories<br><br>
-    <b>Final Choice</b><br>
-    31 trajectories<br>  
-</div>
-
-<div class="text">
-    <b><br>Why it loses consideration</b>
-    </div>
-
-<div class="mismatch-table">
-
-  <div class="mismatch-row">
-    <div class="mismatch-name">Role overlap</div>
-    <div class="mismatch-percent">34%</div>
-    <div class="mismatch-meta">View details</div>
-  </div>
-
-  <div class="mismatch-row">
-    <div class="mismatch-name">Preference mismatch</div>
-    <div class="mismatch-percent">27%</div>
-    <div class="mismatch-meta">View details</div>
-  </div>
-
-  <div class="mismatch-row">
-    <div class="mismatch-name">Competitive displacement</div>
-    <div class="mismatch-percent">21%</div>
-    <div class="mismatch-meta">View details</div>
-  </div>
-
-  <div class="mismatch-row">
-    <div class="mismatch-name">Context mismatch</div>
-    <div class="mismatch-percent">18%</div>
-    <div class="mismatch-meta">View details</div>
-  </div>
-  </div>
-
-
-  <div class="text">
-    <b><br>Most frequent displacement</b><br><br>
-    SKU #18741<br><br>
-    Selected instead in 42 trajectories<br><br>
-  </div>
-  
-    <div class="mismatch-footer">
-  View decision trajectories
-</div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- VALUE -->
-  <div class="section">
-    <div class="title-section">VALUE</div>
-
-    <div class="big bold" style="margin-bottom: 22px;">
-      From outcomes to decision intelligence:<br><br>
-    </div>
-    
-    <div class="list">
-      <div>·&nbsp;&nbsp;Understand why products enter or leave consideration.</div>
-      <div>·&nbsp;&nbsp;Reveal hidden consumer-assortment gaps.</div>
-      <div>·&nbsp;&nbsp;Identify substitution, overlap, and competitive displacement.</div>
-      <div>·&nbsp;&nbsp;Test assortment resilience under changing consumer priorities.</div>
-      <div>·&nbsp;&nbsp;Give AI agents structured domain expertise.</div>
-    </div>
-
-    <div class="text" style="margin-top: 72px;">
-      <b>Fit ≠ Consideration ≠ Choice</b>
-    </div>
-  </div>
-  
-  <div class="divider"></div>
-  
-  <!-- CURRENT RESEARCH -->
-<div class="section">
-
-  <div class="title-section">CURRENT RESEARCH</div>
-
-  <div class="research-card">
-
-    <div class="big bold" style="margin-bottom: 22px;">
-      Three Uncomfortable<br>
-      Findings from<br>
-      Luxury-Watch Assortments
-    </div>
-
-    <div class="research-brands">
-      Grand Seiko · Longines · OMEGA · Panerai · Rolex · TUDOR
-    </div>
-
-    <div class="research-line"></div>
-
-    <div class="research-findings">
-
-      <div class="research-finding">
-        <div class="research-number">
-          74<span>%</span>
+    <div class="visual" aria-label="What existing systems see compared with DTI">
+      <div class="visual-label">What systems see — and what remains missing</div>
+      <div class="systems-grid">
+        <div class="system-card">
+          <div class="system-name">WEB ANALYTICS</div>
+          <div class="system-row"><div class="system-key">Sees</div><div class="system-value">click · view · conversion</div></div>
+          <div class="system-row"><div class="system-key">Misses</div><div class="system-value">why the person hesitated</div></div>
         </div>
-
-        <div class="research-description">
-          Achieved a strong fit but never entered a final shortlist
+        <div class="system-card">
+          <div class="system-name">CRM</div>
+          <div class="system-row"><div class="system-key">Sees</div><div class="system-value">identity · transaction</div></div>
+          <div class="system-row"><div class="system-key">Misses</div><div class="system-value">how the person explains value</div></div>
+        </div>
+        <div class="system-card">
+          <div class="system-name">FOUNDATION LLM</div>
+          <div class="system-row"><div class="system-key">Sees</div><div class="system-value">current text · general intelligence</div></div>
+          <div class="system-row"><div class="system-key">Misses</div><div class="system-value">a persistent, brand-accessible decision history</div></div>
+        </div>
+        <div class="system-card dti">
+          <div class="system-name">DTI</div>
+          <div class="system-row"><div class="system-key">Sees</div><div class="system-value">goals · constraints · trade-offs · mismatch · confidence · demand · outcomes over time</div></div>
+          <div class="system-row"><div class="system-key">Boundary</div><div class="system-value">does not replace operational systems</div></div>
         </div>
       </div>
-
-      <div class="research-finding">
-        <div class="research-number">
-          16<span>%</span>
-        </div>
-
-        <div class="research-description">
-          Showed repeated intra-brand role overlap — a signal of potential cannibalization
-        </div>
-      </div>
-
-      <div class="research-finding">
-        <div class="research-number">
-          15<span>%</span>
-        </div>
-
-        <div class="research-description">
-          Lost shortlist presence under at least one strong trend scenario
-        </div>
-      </div>
-
     </div>
+  </section>
 
-    <div class="research-line"></div>
-
-    <div class="research-meta">
-      379,440 Consumer × Goal × SKU evaluations<br>
-      680 men’s watches · €5k–15k
-    </div>
-
-    <a
-      href="mailto:yk@darivia.com?subject=DTI%20Luxury%20Watch%20Research"
-      class="research-report-link">
-      Request the full research
-    </a>
-
-  </div>
-</div>
-  
   <div class="divider"></div>
 
-  <!-- CTA -->
-   <div class="section shift">
-   <div class="title-section">DTI</div>
-   <div class="big">
-  Architecture & Research by DARIVIA.<br><br>
-  
-</div>
-    
-  <div class="cta" style="margin-top: 22px;">
-    <a href="https://linkedin.com/in/ykhechoyan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="mailto:yk@darivia.com">Email</a>
-  </div>
+  <section class="section shift">
+    <h2 class="title-section">GAP</h2>
+    <div class="big bold" style="margin-bottom:28px">Product fit is not competitive consideration</div>
+    <div class="text">
+      A product can fit a consumer's needs and still never enter serious consideration.<br><br>
+      Choice emerges from the interaction between <b>Consumer</b> — identity, preferences, parameters; <b>Mission</b> — goal, context, constraints; and <b>Product</b> — attributes, positioning, alternatives.<br><br>
+      Traditional customer and product data capture parts of this system. They rarely capture the trajectory of the decision itself.
+    </div>
+  </section>
 
-  <div class="text" style="margin-top: 80px;">
-    DARIVIA © 2026 | All rights reserved.
-  </div>
-  </div>
-</div>
+  <div class="divider"></div>
+
+  <section class="section shift">
+    <h2 class="title-section">MARKET SHIFT</h2>
+    <div class="text">
+      LLMs are becoming a new interface for commerce, but they do not by themselves create durable brand knowledge about choice.<br><br>
+      A model can conduct a good conversation while the brand still loses the context, reasons, and decision patterns after the session ends.
+    </div>
+    <div class="big bold" style="margin-top:38px">A new intelligence layer between customer data and commercial outcomes</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section section-wide">
+    <h2 class="title-section">WHAT WE DO</h2>
+    <div class="text">
+      The customer talks to the brand. DTI works behind the Brand Agent. The Brand Agent runs the dialogue; DTI receives permitted signals, returns relevant guidance, creates a separate Decision Trajectory, and converts it into intelligence.
+    </div>
+
+    <div class="visual architecture" aria-label="DTI platform architecture">
+      <div class="visual-label">Platform architecture</div>
+      <div class="architecture-flow">
+        <div class="architecture-box">
+          <div class="box-kicker">Interface</div>
+          <div><div class="box-title">Consumer</div><div class="box-copy">goals · context · constraints</div></div>
+        </div>
+        <div class="architecture-arrow">→</div>
+        <div class="architecture-box">
+          <div class="box-kicker">Conversation</div>
+          <div><div class="box-title">Brand Agent</div><div class="box-copy">owns the customer dialogue</div></div>
+        </div>
+        <div class="architecture-arrow">⇄</div>
+        <div class="architecture-box core">
+          <div class="box-kicker">Guidance process</div>
+          <div><div class="box-title">Expert-Guided Intelligence</div><div class="box-copy">what to clarify · compare · explain</div></div>
+        </div>
+      </div>
+      <div class="architecture-data-flow">
+        <div class="architecture-box trajectory-box">
+          <div class="box-kicker">Primary data entity</div>
+          <div><div class="box-title">Decision Trajectory</div><div class="box-copy">time-ordered goals · contexts · alternatives · decisions · actions · outcomes</div></div>
+        </div>
+        <div class="architecture-arrow">→</div>
+        <div class="architecture-box intelligence-box">
+          <div class="box-kicker">Structured knowledge</div>
+          <div><div class="box-title">DTI Intelligence Layer</div><div class="box-copy">Trajectory Archive · Decision Memory · Consumer and Market Models · versioned intelligence</div></div>
+        </div>
+      </div>
+      <div class="foundation"><div class="foundation-box">Foundation LLM — model, weights, and inference infrastructure used by the Brand Agent</div></div>
+      <div class="outputs-arch">
+        <div class="output-arch"><strong>Guidance Intelligence</strong><span>Relevant context · next questions · better next action · Consumer Summary</span></div>
+        <div class="output-arch"><strong>Market & Assortment Intelligence</strong><span>Mismatch · unmet demand · emerging needs · overlap · demand signals</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="title-section">HOW</h2>
+    <div class="text">
+      Conversation remains the brand's operational interaction. DTI creates a separate, time-ordered structured object from permitted signals. Goals and contexts belong to the trajectory, not to the persistent Consumer Mind Model.
+    </div>
+
+    <div class="visual pipeline" aria-label="Decision trajectory pipeline">
+      <div class="visual-label">One decision trajectory</div>
+      <div class="pipeline-track">
+        <div class="pipeline-step"><div class="pipeline-dot">01</div><div class="pipeline-name">Goals & Contexts</div><div class="pipeline-copy">what the person is trying to achieve and when</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">02</div><div class="pipeline-name">Constraints</div><div class="pipeline-copy">eligibility and decision boundaries</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">03</div><div class="pipeline-name">Preferences</div><div class="pipeline-copy">functional · aesthetic · contextual</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">04</div><div class="pipeline-name">Alternatives</div><div class="pipeline-copy">products considered and rejected</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">05</div><div class="pipeline-name">Trade-offs</div><div class="pipeline-copy">acceptable and unacceptable compromises</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">06</div><div class="pipeline-name">Decisions</div><div class="pipeline-copy">the evolving structure of choice</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">07</div><div class="pipeline-name">Actions</div><div class="pipeline-copy">what happens after the decision</div></div>
+        <div class="pipeline-step"><div class="pipeline-dot">08</div><div class="pipeline-name">Outcomes</div><div class="pipeline-copy">confirmed results over time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section shift">
+    <h2 class="title-section">TWO OUTPUTS</h2>
+    <div class="text">The same intelligence layer supports the live consumer experience and reveals patterns across the market.</div>
+    <div class="two-outputs">
+      <div class="output-card">
+        <div class="output-index">01</div>
+        <h3 class="output-title mono-title">Commercial Intelligence</h3>
+        <p class="output-copy">Demand Capture and Demand Formation: conversion, cross-sell, upsell, retention, latent desires, new categories, and future needs.</p>
+      </div>
+      <div class="output-card">
+        <div class="output-index">02</div>
+        <h3 class="output-title mono-title">Business Intelligence</h3>
+        <p class="output-copy">Customer-Product Mismatch, Assortment, Merchandising, and Demand Intelligence derived from accumulated trajectories.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="title-section">DECISION INTELLIGENCE</h2>
+    <div class="text">The reports are a derived Business Intelligence layer built on Customer-Product Fit and competitive shortlist decisions. They demonstrate downstream analytical capability, not the full live EGI process.</div>
+    <div class="evidence-card">
+      <div class="evidence-head">
+        <div><div class="eyebrow">Controlled evidence laboratory</div><div class="sku">From fit to shortlist intelligence</div></div>
+        <div class="sample">Synthetic consumer corpus · official brand catalogue data</div>
+      </div>
+      <div class="funnel">
+        <div class="funnel-item"><div class="funnel-number">379,440</div><div class="funnel-label">Consumer × Goal × SKU evaluations</div></div>
+        <div class="funnel-item"><div class="funnel-number">558</div><div class="funnel-label">Competitive consultations</div></div>
+        <div class="funnel-item"><div class="funnel-number">1,639</div><div class="funnel-label">Candidates in final shortlists</div></div>
+      </div>
+      <div class="big" style="margin-top:36px">Three demonstrated application classes</div>
+      <div class="mismatch-table">
+        <div class="mismatch-row evidence-row"><div class="mismatch-name">Consumer-Assortment Coverage</div><div class="mismatch-meta">Portfolio coverage · white space · role overlap</div></div>
+        <div class="mismatch-row evidence-row"><div class="mismatch-name">Product-Consumer Resonance</div><div class="mismatch-meta">Strong · Compromise · displacement · product role</div></div>
+        <div class="mismatch-row evidence-row"><div class="mismatch-name">Scenario Stress Test</div><div class="mismatch-meta">Baseline → Moderate → Strong shortlist migration</div></div>
+      </div>
+      <div class="mismatch-footer">Proof of analytical capability — not a market forecast and not a substitute for empirical validation</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section shift">
+    <h2 class="title-section">PILOT</h2>
+    <div class="big bold mono-title">A pilot must test the full EGI process in live interaction</div>
+    <div class="text" style="margin-top:24px">The current evidence demonstrates downstream analytics. Live guidance, Demand Formation, confidence evolution, and cross-interaction Decision Memory require a brand pilot.</div>
+    <div class="pilot-grid">
+      <div class="pilot-step"><div class="pilot-number">01 / CONNECT</div><div class="pilot-title">Connect permitted interactions</div><div class="pilot-copy">Catalogue, intended product roles, business questions, and permitted Expert-Guided Interactions.</div></div>
+      <div class="pilot-step"><div class="pilot-number">02 / BUILD</div><div class="pilot-title">Build Decision Trajectories</div><div class="pilot-copy">Create separate trajectories and connect them to outcomes through Anonymized_UID.</div></div>
+      <div class="pilot-step"><div class="pilot-number">03 / VALIDATE</div><div class="pilot-title">Validate the live process</div><div class="pilot-copy">Test guidance, Demand Formation, confidence evolution, fit, and management signals.</div></div>
+      <div class="pilot-step"><div class="pilot-number">04 / ACT</div><div class="pilot-title">Return intelligence</div><div class="pilot-copy">Return Commercial and Business Intelligence to the Brand Domain, CRM, and APS.</div></div>
+    </div>
+    <a href="mailto:yk@darivia.com?subject=DTI%20Pilot" class="research-report-link">Discuss a pilot</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="title-section">CURRENT RESEARCH</h2>
+    <div class="research-card">
+      <div class="big bold mono-title" style="margin-bottom:22px">Three Uncomfortable<br>Findings from<br>Luxury-Watch Assortments</div>
+      <div class="research-brands">Grand Seiko · Longines · OMEGA · Panerai · Rolex · TUDOR</div>
+      <div class="research-line"></div>
+      <div class="research-findings">
+        <div class="research-finding"><div class="research-number">74<span>%</span></div><div class="research-description">Achieved a strong fit but never entered a final shortlist</div></div>
+        <div class="research-finding"><div class="research-number">16<span>%</span></div><div class="research-description">Showed repeated intra-brand role overlap — a signal of potential cannibalization</div></div>
+        <div class="research-finding"><div class="research-number">15<span>%</span></div><div class="research-description">Lost shortlist presence under at least one strong trend scenario</div></div>
+      </div>
+      <div class="research-line"></div>
+      <div class="research-meta">379,440 Consumer × Goal × SKU evaluations<br>680 men’s watches · €5k–15k</div>
+      <div class="note" style="margin-top:18px">255 synthetic Consumer Mind Models · 558 profile-specific purchase goals · 6 brands</div>
+      <a href="mailto:yk@darivia.com?subject=DTI%20Luxury%20Watch%20Research" class="research-report-link">Request the full research</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section shift">
+    <h2 class="title-section">VALUE</h2>
+    <div class="big bold mono-title">From outcomes to decision intelligence</div>
+    <div class="list">
+      <div>·&nbsp;&nbsp;Improve guidance for conversion, cross-sell, upsell, retention, and return reduction.</div>
+      <div>·&nbsp;&nbsp;Reveal Customer-Product Mismatch, assortment gaps, and missing products.</div>
+      <div>·&nbsp;&nbsp;Identify product-role overlap, competitive displacement, and decision bottlenecks.</div>
+      <div>·&nbsp;&nbsp;Stress-test shortlist and portfolio migration under stated scenarios.</div>
+      <div>·&nbsp;&nbsp;Return relevant Guidance Context and intelligence views to Brand Domain, CRM, and APS.</div>
+    </div>
+    <div class="big bold" style="margin-top:72px">Fit ≠ Shortlist ≠ Final Purchase</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <h2 class="title-section">OWNERSHIP</h2>
+    <div class="ownership">
+      <div class="ownership-card"><div class="ownership-title mono-title">Brand</div><div class="ownership-copy">Owns the Customer Relationship, Communication, Conversation, raw interaction records, Orders, Transactions, and Brand Domain. Retains PII.</div></div>
+      <div class="ownership-card"><div class="ownership-title">DTI</div><div class="ownership-copy">Owns the Decision Trajectory Archive, Decision Memory, DTI objects, and derived Commercial and Business Intelligence.</div></div>
+      <div class="ownership-card"><div class="ownership-title">LLM Vendor</div><div class="ownership-copy">Owns the foundation model, weights, and inference infrastructure. It is not a unique DTI asset.</div></div>
+    </div>
+    <div class="note ownership-note">Conversation remains with the brand. DTI creates a separate anonymized Decision Trajectory from permitted signals. Specific rights, retention, deletion, and portability are governed by consent and contract.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer class="section shift">
+    <h2 class="title-section">DTI</h2>
+    <div class="big">Architecture & Research by DARIVIA</div>
+    <div class="cta" style="margin-top:34px">
+      <a href="https://linkedin.com/in/ykhechoyan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:yk@darivia.com">Email</a>
+    </div>
+    <div class="note" style="margin-top:80px">DARIVIA © 2026 | All rights reserved.</div>
+  </footer>
+</main>
 
 <script>
-const sections = document.querySelectorAll(".section");
+const sections = document.querySelectorAll('.section');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { rootMargin: "0px 0px -80px 0px" });
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.04 });
 
-sections.forEach(section => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
+} else {
+  sections.forEach((section) => section.classList.add('visible'));
+}
 </script>
-
 </body>
 </html>
+
