@@ -1250,6 +1250,205 @@ body,
   display: none;
   content: none;
 }
+
+/* DARIVIA LINE PATTERN */
+.hero,
+.pattern-left {
+  position: relative;
+}
+
+.hero > :not(.hero-pattern),
+.pattern-left > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-pattern,
+.pattern-left::before {
+  background-image: url('darivia-line-pattern.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.hero-pattern {
+  position: absolute;
+  z-index: 0;
+  top: 150px;
+  right: -50px;
+  width: 470px;
+  height: 390px;
+  opacity: .42;
+  -webkit-mask-image: linear-gradient(to left, #000 0%, #000 62%, transparent 100%);
+  mask-image: linear-gradient(to left, #000 0%, #000 62%, transparent 100%);
+}
+
+.pattern-left::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 4px;
+  left: calc(-33.333% - 22px);
+  width: 30%;
+  height: 190px;
+  opacity: .68;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to right, #000 0%, #000 70%, transparent 100%);
+}
+
+@media (max-width: 1199px) {
+  .pattern-left { padding-left: 72px; }
+
+  .pattern-left::before {
+    left: -12px;
+    width: 180px;
+    opacity: .26;
+  }
+
+}
+
+@media (max-width: 760px) {
+  .hero-pattern {
+    position: relative;
+    top: auto;
+    right: auto;
+    order: 5;
+    width: 100%;
+    height: 112px;
+    margin-top: 52px;
+    opacity: .72;
+    background-size: 100% auto;
+    background-position: center 43%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  }
+
+  .pattern-left::before {
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: 72px;
+    margin-bottom: 34px;
+    opacity: .72;
+    background-size: 100% auto;
+    background-position: center 37%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  }
+
+  .pattern-left { padding-left: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-pattern { animation: patternReveal 1.8s cubic-bezier(.22, 1, .36, 1) .55s both; }
+}
+
+@keyframes patternReveal {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: .42; transform: translateX(0); }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  @keyframes patternReveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: .72; transform: translateY(0); }
+  }
+}
+
+/* UNIFIED DESKTOP PATTERN CROP — 1:2, NEVER STRETCHED */
+@media (min-width: 1200px) {
+  .hero-pattern,
+  .pattern-left::before {
+    width: 160px;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-pattern {
+    top: 142px;
+    right: 0;
+  }
+
+  .pattern-left::before {
+    top: 0;
+    left: -220px;
+  }
+}
+
+/* MOBILE PATTERN MARK — 3MM VERTICAL STRIP */
+@media (max-width: 760px) {
+  .hero-pattern,
+  .pattern-left::before {
+    position: absolute;
+    width: 3mm;
+    height: 32mm;
+    margin: 0;
+    opacity: .86;
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-pattern {
+    top: 90px;
+    right: 0;
+    left: auto;
+  }
+
+  .pattern-left {
+    padding-left: 3mm;
+  }
+
+  .pattern-left::before {
+    display: block;
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+
+  .pattern-left > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
+  .hero-pattern {
+    animation: patternRevealMobile 1.4s cubic-bezier(.22, 1, .36, 1) .4s both;
+  }
+}
+
+@keyframes patternRevealMobile {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: .82; transform: translateY(0); }
+}
+
+/* FINAL MOBILE PATTERN — HERO ONLY, 1:4 */
+@media (max-width: 760px) {
+  .hero-pattern {
+    top: 90px;
+    right: 0;
+    width: 36px;
+    height: 144px;
+    opacity: .82;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .pattern-left {
+    padding-left: 0;
+  }
+
+  .pattern-left::before {
+    display: none;
+    content: none;
+  }
+}
 </style>
 </head>
 
@@ -1264,6 +1463,7 @@ body,
     <div class="hero-statement">
       DTI Platform is an Expert-Guided Intelligence system that captures and analyzes consumer-brand interactions, creates a separate Consumer Decision Trajectory, and transforms the resulting knowledge into Commercial and Business Intelligence.
     </div>
+    <div class="hero-pattern" aria-hidden="true"></div>
   </section>
 
   <div class="divider"></div>
@@ -1304,7 +1504,7 @@ body,
 
   <div class="divider"></div>
 
-  <section class="section shift">
+  <section class="section shift pattern-left">
     <h2 class="title-section">GAP</h2>
     <div class="big bold" style="margin-bottom:28px">Product fit is not competitive consideration</div>
     <div class="text">
@@ -1316,7 +1516,7 @@ body,
 
   <div class="divider"></div>
 
-  <section class="section shift">
+  <section class="section shift pattern-left">
     <h2 class="title-section">MARKET SHIFT</h2>
     <div class="text">
       LLMs are becoming a new interface for commerce, but they do not by themselves create durable brand knowledge about choice.<br><br>
@@ -1474,7 +1674,7 @@ body,
 
   <div class="divider"></div>
 
-  <section class="section shift">
+  <section class="section shift pattern-left">
     <h2 class="title-section">VALUE</h2>
     <div class="big bold mono-title">From outcomes to decision intelligence</div>
     <div class="list">
@@ -1501,7 +1701,7 @@ body,
 
   <div class="divider"></div>
 
-  <footer class="section shift">
+  <footer class="section shift pattern-left">
     <h2 class="title-section">DTI</h2>
     <div class="big">Architecture & Research by DARIVIA</div>
     <div class="cta" style="margin-top:34px">
@@ -1532,4 +1732,5 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 </script>
 </body>
 </html>
+
 
