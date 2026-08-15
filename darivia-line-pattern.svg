@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">DARIVIA line pattern</title>
+  <desc id="desc">A square pattern of evenly spaced horizontal lines in black, gray, blue, and burgundy.</desc>
+  <rect width="1200" height="1200" fill="#fff"/>
+  <g fill="none" stroke-width="6" shape-rendering="geometricPrecision">
+    <path stroke="#111214" d="M0 24H1200M0 264H1200M0 552H1200M0 840H1200M0 1032H1200M0 1176H1200"/>
+    <path stroke="#AEB4B9" d="M0 72H1200M0 216H1200M0 360H1200M0 504H1200M0 648H1200M0 792H1200M0 936H1200M0 1080H1200M0 1128H1200"/>
+    <path stroke="#1769AA" d="M0 120H1200M0 312H1200M0 456H1200M0 744H1200M0 984H1200"/>
+    <path stroke="#68121C" d="M0 168H1200M0 408H1200M0 696H1200M0 888H1200"/>
+    <path stroke="#AEB4B9" d="M0 600H1200"/>
+  </g>
+</svg>
