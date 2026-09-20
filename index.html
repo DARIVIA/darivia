@@ -1317,6 +1317,25 @@ html&gt;body{padding:0}&lt;/style&gt;
   #darivia-preview .contact-links a { overflow-wrap:anywhere; }
   #darivia-preview .contact-side .founder-bio { font-size:clamp(16px,1.35vw,19px); line-height:1.5; margin-top:26px; }
   #darivia-preview .footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0; color:var(--muted); font-size:16.5px; }
+  @media(min-width:561px) {
+    #darivia-preview .eyebrow { font-size:14px; }
+    #darivia-preview .hero-copy { padding-top:calc(clamp(65px,8vw,120px) - 40px); }
+    #darivia-preview .accent.statement { margin-block:64px; }
+    #darivia-preview .domains { margin-block:60px; }
+    #darivia-preview .three { margin-top:96px; margin-bottom:clamp(64px,7vw,105px); }
+    #darivia-preview .expert-example { margin-top:88px; margin-bottom:64px; }
+    #darivia-preview { --body:max(16px,calc(clamp(18px,1.75vw,25px) - 4px)); }
+    #darivia-preview :is(h1,h2) { font-size:calc(clamp(34px,4vw,58px) - 8px); }
+    #darivia-preview h3 { font-size:calc(clamp(25px,2.5vw,36px) - 8px); }
+    #darivia-preview .cta { font-size:max(16px,calc(clamp(18px,1.75vw,25px) - 4px)); }
+    #darivia-preview .audience { font-size:14px; }
+    #darivia-preview .value p { font-size:max(16px,calc(clamp(17px,1.375vw,20px) - 4px)); }
+    #darivia-preview :is(.statement,.example-result) { font-size:calc(clamp(23px,2.5vw,36px) - 8px); }
+    #darivia-preview .research-top .lead { font-size:calc(clamp(25px,2.5vw,36px) - 8px); }
+    #darivia-preview .domains span { font-size:calc(clamp(22px,2.5vw,36px) - 8px); }
+    #darivia-preview .example-note { font-size:14px; }
+    #darivia-preview .contact-side .founder-bio { font-size:calc(clamp(16px,1.35vw,19px) - 2px); }
+  }
   @media(max-width:800px) {
     #darivia-preview .hero-copy { width:70%; padding-top:90px; }
     #darivia-preview .hero::before { background-position:65% center; }
@@ -1327,6 +1346,9 @@ html&gt;body{padding:0}&lt;/style&gt;
     #darivia-preview :is(.value,.accent) { padding:24px; }
     #darivia-preview .expert-example,#darivia-preview .contact-grid { grid-template-columns:1fr; gap:36px; }
     #darivia-preview .contact-side { padding-top:0; }
+  }
+  @media(min-width:561px) and (max-width:800px) {
+    #darivia-preview .hero-copy { padding-top:50px; }
   }
   @media(max-width:560px) {
     #darivia-preview .hero-copy { width:100%; padding-top:75px; }
