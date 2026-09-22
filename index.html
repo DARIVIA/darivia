@@ -30,8 +30,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=2">
 <link rel="preload" as="image" type="image/webp" href="./assets/hero.5c306b557b19.webp" fetchpriority="high">
-<link rel="stylesheet" href="./assets/site.e66239c1eb0c.css">
-<script defer src="./assets/analytics.40985550e675.js"></script>
+<link rel="stylesheet" href="./assets/site.de244d2fb0b5.css">
+<script defer src="./assets/analytics.a1cd7d6d74ed.js"></script>
 </head>
 <body>
 <main id="darivia" lang="en">
@@ -45,7 +45,7 @@
       <h1>Expert Consumer Intelligence<br>for brand apps<br>inside AI platforms</h1>
       <p class="hero-intro">DTI helps brand apps in ChatGPT, Claude and Gemini lead expert conversations, understand how customers choose, and use a portable consumer model.</p>
       <p class="hero-result">Brands gain insight into why their products are chosen or rejected.</p>
-      <a class="cta" href="#d-contact" data-analytics-event="connect_click">Connect DTI to your app</a>
+      <a class="cta" href="#d-connect" data-analytics-event="connect_click">Explore DTI integration options</a>
     </div>
   </div>
 </header>
@@ -104,15 +104,22 @@
   <p class="diagram-summary">One expert method across brand apps. Individual consumer models that customers can carry between connected apps. No separate product version for each client.</p>
 </div></section>
 
-<section class="section" id="d-developers"><div class="wrap split">
-  <div class="developer-intro"><div class="eyebrow">For developers</div><h2>Connect your app<br>to DTI.</h2>
-    <p>The planned integration starts with brand apps in ChatGPT. DTI runs as an external service, not a component installed inside the LLM.</p>
-    <p>The app connects through MCP tools to retrieve an expert strategy, access an authorised consumer model and submit event graphs. A server-side SDK is optional. Saved profiles require a sign-in and permission flow.</p>
+<section class="section" id="d-connect"><div class="wrap">
+  <div class="eyebrow">Two ways to connect</div><h2>One DTI platform.<br>Two ways to bring it to your customers.</h2>
+  <div class="connection-options">
+    <article class="connection-card"><h3>Start with a white-label app</h3><p><strong>[Your brand] Client Advisor</strong></p><p>An app template under your brand’s name and identity, with DTI already connected. Personal guidance before and after purchase: from discovery, selection and comparison to purchase assistance, order support and after-sales care.</p><p>Optional connectors for brand knowledge, product catalogue, CRM, order management and customer support. Start with brand knowledge and a simplified catalogue, then add further integrations as needed.</p></article>
+    <article class="connection-card"><h3>Connect your existing app</h3><p>Add DTI to your own app while retaining its interface, integrations and commercial workflows.</p><p>DTI provides the expert method and consumer intelligence that help your app understand how customers choose, support their decisions and maintain continuity across interactions.</p></article>
   </div>
-  <div class="copy exchange">
-    <article><h3>From your app to DTI</h3><p>A graph of events related to the choice process, extracted from the dialogue between the LLM and the customer. The LLM builds the graph according to DTI’s rules, preserving the meaning of events and the relationships between them.</p></article>
-    <article><h3>From DTI to your app</h3><p>A starting package with a domain-specific consultation strategy and the permitted part of an existing consumer model. The brand also receives consumer choice analytics through an API.</p></article>
-    <p>Your app keeps its interface, catalogue and commercial workflows. ChatGPT conducts the conversation; DTI does not direct every reply.</p>
+  <p class="example-note">Both routes connect to the same DTI platform.</p>
+</div></section>
+
+<section class="section" id="d-developers"><div class="wrap">
+  <div class="developer-intro"><div class="eyebrow">For developers</div><h2>Integrate DTI into your customer experience.</h2>
+    <p>Start with the white-label template or connect your existing app. Our initial implementation focuses on ChatGPT, with DTI running as an external platform.</p>
+  </div>
+  <div class="split developer-routes">
+    <article><h3>1. White-label template</h3><p><strong>[Your brand] Client Advisor</strong> is designed with DTI already connected. Configure the template for your brand and optionally connect your systems using the template’s connectors.</p><h4>Optional template connectors</h4><p>The planned MVP connector set covers five areas:</p><ul class="connector-list"><li><strong>Brand knowledge:</strong> brand information, policies and product care.</li><li><strong>Product catalogue:</strong> product information, specifications, variants and prices.</li><li><strong>CRM:</strong> customer relationships and interaction history.</li><li><strong>Order management:</strong> purchases, order status, delivery and returns.</li><li><strong>Customer support:</strong> service requests and handoff to a human specialist.</li></ul><p>Start with brand knowledge and a simplified catalogue, then add further integrations as needed. Available data and operational capabilities depend on the integrations enabled.</p><p>These connectors are a starting point, not an architectural limit. Additional integrations can be added over time, such as loyalty programmes, consultation booking, service history or product configurators.</p></article>
+    <article><h3>2. Your existing app</h3><p>Keep your app’s interface, brand-system integrations and commercial workflows. Add the connection to DTI within your own app.</p><h4 class="app-connection-title">App connection</h4><p>Your app connects to DTI through MCP tools to retrieve expert guidance, access the permitted part of a consumer model and submit event graphs. A server-side SDK is optional. Saved profiles require a sign-in and permission flow.</p><h4>From your app to DTI</h4><p>A graph of events related to the customer’s choice and experience, extracted from the dialogue between the LLM and the customer. The LLM builds the graph according to DTI’s rules, preserving the meaning of events and the relationships between them.</p><h4>From DTI to your app</h4><p>A starting package with an expert consultation strategy and the permitted part of an existing consumer model. The brand also receives consumer choice analytics through an API.</p></article>
   </div>
 </div></section>
 
@@ -120,8 +127,8 @@
   <div class="eyebrow">Data and customer control</div><h2>Relevant context. Controlled access.</h2>
   <div class="data-columns">
     <article><h3>What is stored</h3><p>DTI stores permitted event graphs and consumer models. Incoming data is checked for structure, permissions and direct identifiers before core processing and storage. Names, contact details, delivery addresses and payment details are excluded from the consumer model.</p></article>
-    <article><h3>Customer control</h3><p>A persistent model is created after the customer connects their profile and grants access. The design includes controls to review and correct the profile, authorise connected apps, revoke access and request deletion. Guest recommendations remain available without a saved profile.</p></article>
-    <article><h3>Purpose and boundaries</h3><p>Personalisation, consumer choice analytics and service improvement, including training the DTI core, are disclosed purposes, subject to the applicable permissions and legal basis. A brand’s analytics uses permitted information from its own customer interactions. Linking accounts does not give DTI access to the brand’s CRM, orders or passwords.</p></article>
+    <article><h3>Customer control</h3><p>A persistent model is created after the customer connects their profile and grants access. The design includes controls to review and correct the profile, authorise connected apps, revoke access and request deletion. Guest recommendations remain available without a saved profile.</p><p>Access to a customer’s brand account requires authentication with the brand. Connecting a DTI profile does not replace that authentication or automatically grant access to brand-account data.</p></article>
+    <article><h3>Purpose and boundaries</h3><p>Personalisation, consumer choice analytics and service improvement, including training the DTI core, are disclosed purposes, subject to the applicable permissions and legal basis. A brand’s analytics uses permitted information from its own customer interactions. Connecting a consumer profile does not, by itself, grant access to brand systems. Optional integrations are configured separately, within the permissions granted by the brand.</p></article>
   </div>
   <p class="accent statement">DTI does not store or reconstruct the full conversation.</p>
 </div></section>
@@ -151,18 +158,21 @@
 </div></section>
 
 <section class="section" id="d-ecommerce"><div class="wrap pilot">
-  <div><div class="eyebrow">For e-commerce leaders</div><h2>Test the value in<br>your customer journey.</h2>
-    <p>Choose a category and a customer task where expert consultation could make a difference to the decision.</p>
-    <p>Before the pilot, we agree on a primary measure: recommendation usefulness, confidence in the choice or task completion. Where purchase data is available, we compare conversion with a control group.</p>
-    <p>As evidence accumulates, the brand gains analytics on the reasons behind choices and rejections. Together, we assess the results, cost of service and next steps for integration.</p>
+  <div><div class="eyebrow">For e-commerce leaders</div><h2>Personal guidance before and after purchase.</h2>
+    <p>Give customers more than a filtered product selection. Help them understand what suits them, compare meaningful alternatives and make confident decisions, with continuity of guidance after purchase.</p>
+    <p>You do not need an existing app to begin. Use the <strong>[Your brand] Client Advisor</strong> white-label template with DTI connected, or add DTI to your own app. With the template, you can start with brand knowledge and a simplified catalogue, then add further integrations as needed.</p>
+    <p>For the pilot, we agree on a customer scenario, the necessary integrations and a primary measure of success: recommendation usefulness, confidence in the choice, task completion or quality of post-purchase support. Where purchase data is available, we compare conversion with a control group.</p>
+    <p>As sufficient evidence accumulates, the brand gains analytics on the reasons behind choices and rejections. Together, we assess the results, cost of service and next steps.</p>
     <a class="cta" href="#d-contact" data-analytics-event="pilot_click">Discuss a pilot</a>
   </div>
   <img src="./assets/ecommerce.1e685e737fbe.webp" alt="An e-commerce leader and an expert discussing fashion products and customer-choice reasons on a screen." loading="lazy" width="1536" height="1024">
 </div></section>
 
 <section class="section"><div class="wrap split">
-  <div><div class="eyebrow">Where we are today</div><h2>Building the product.<br>Preparing for real users.</h2></div>
-  <div><p>We are developing the prototype and preparing expert apps in three categories.</p><div class="domains"><span>Watches</span><span>Clothing &amp;<br>footwear</span><span>Cars</span></div><p>The next step is to test the expert method in real user scenarios and prepare the first commercial integrations.</p><p>We are discussing early integration of DTI’s expert method with brands and app developers.</p></div>
+  <div><div class="eyebrow">Where we are today</div><h2>Building the MVP.<br>Preparing to test DTI with real users.</h2><p class="development-intro">We are developing Personal Product Advisor, an app in ChatGPT connected to the DTI platform.</p></div>
+  <div>
+    <article class="accent advisor-card"><h3>Personal Product Advisor</h3><p>Guides you through complex product decisions with professional expertise, shaped around your goals, values, lifestyle, preferences, and individual needs.</p><p><em>Powered by DTI</em></p><div class="advisor-description"><p><strong>Description</strong></p><p>Guides customers through complex choices like a professional expert: helps them understand what truly suits them and proposes well-founded options based on their goals, values, lifestyle, preferences and individual characteristics.</p><p>Designed for choosing products and services in categories that traditionally require expert guidance.</p></div></article>
+  </div>
 </div></section>
 
 <section class="section contact" id="d-contact"><div class="wrap contact-grid">
