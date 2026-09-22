@@ -1,0 +1,149 @@
+html,body{margin:0;padding:0;background:#FAFAF8}html{color-scheme:light}a{text-underline-offset:2px}
+
+  :root { color-scheme:light!important; --background:#FAFAF8!important; }
+  #darivia { --blue:#1769AA; --ink:#17212C; --muted:#526171; --line:#D4DDE4; --pale:#E5EEF5; --body:clamp(18px,1.75vw,25px); color:var(--ink); background:#FAFAF8; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:var(--body); line-height:1.4; font-weight:400; }
+  #darivia * { box-sizing:border-box; }
+  #darivia :is(h1,h2,h3,p,figure) { margin:0; }
+  #darivia :is(h1,h2) { font-family:inherit; font-size:clamp(34px,4vw,58px); line-height:1.12; font-weight:700; letter-spacing:-.015em; }
+  #darivia h3 { font-size:clamp(25px,2.5vw,36px); line-height:1.15; font-weight:500; }
+  #darivia strong { font-weight:700; }
+  #darivia p+p { margin-top:1em; }
+  #darivia a { color:var(--blue); text-decoration:none; font-weight:400; }
+  #darivia a:hover { text-decoration:underline; text-decoration-style:solid; }
+  #darivia a:focus-visible { outline:3px solid var(--blue); outline-offset:5px; }
+  #darivia img { display:block; width:100%; height:auto; }
+  #darivia .wrap { width:91%; max-width:1310px; margin:auto; }
+  #darivia .section { padding:clamp(64px,7vw,105px) 0; border-bottom:1px solid var(--line); }
+  #darivia .eyebrow { color:var(--blue); font-size:clamp(16.5px,1.375vw,20px); line-height:1.3; margin-bottom:22px; }
+  #darivia .hero { position:relative; min-height:clamp(720px,56.25vw,941px); background:#FAFAF8; isolation:isolate; }
+  #darivia .hero::before { content:""; position:absolute; inset:0; z-index:-2; background:url('./hero.5c306b557b19.webp') 70% center/cover no-repeat; }
+  #darivia .hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(250,250,248,.8) 0%,rgba(250,250,248,.63) 39%,rgba(250,250,248,.15) 64%,transparent 78%); }
+  #darivia .header { padding:30px 0; }
+  #darivia .wordmark { font-size:16.5px; letter-spacing:0; font-weight:700; }
+  #darivia .hero-copy { width:61%; padding:clamp(65px,8vw,120px) 0 80px; }
+  #darivia .hero h1 { max-width:800px; }
+  #darivia .hero-intro { margin-top:32px; max-width:min(680px,95%); }
+  #darivia .hero-result { max-width:min(680px,95%); margin-top:22px; }
+  #darivia .cta { display:inline-block; margin-top:32px; padding:17px 26px; background:var(--blue); color:white; font-size:clamp(18px,1.75vw,25px); line-height:1.25; }
+  #darivia .split { display:grid; grid-template-columns: .88fr 1.12fr; gap:6%; }
+  #darivia .copy { color:var(--ink); }
+  #darivia .developer-intro h2 { margin-bottom:28px; }
+  #darivia .exchange { display:flex; flex-direction:column; gap:36px; }
+  #darivia .connection-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; margin:48px 0 32px; }
+  #darivia .connection-card { background:var(--pale); border-left:4px solid var(--blue); padding:32px; }
+  #darivia .connection-card h3 { color:var(--blue); margin-bottom:24px; }
+  #darivia .connection-card p:last-child { margin-bottom:0; }
+  #darivia .advisor-card { width:100%; margin-top:32px; }
+  #darivia .advisor-card h3 { color:var(--blue); font-weight:700; margin-bottom:24px; }
+  #darivia .advisor-card .advisor-description { font-size:14px; line-height:1.5; margin-top:40px; }
+  #darivia .developer-routes { margin-top:48px; align-items:start; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #darivia .developer-routes h3 { color:var(--blue); margin-bottom:28px; }
+  #darivia .developer-routes h4 { font-size:inherit; margin:32px 0 20px; }
+  #darivia .development-intro { margin-top:32px; }
+  @media(max-width:800px) { #darivia .split.developer-routes { grid-template-columns:1fr; } }
+  #darivia .advisor-description p:last-child { margin-bottom:0; }
+  #darivia .connector-list { padding-left:20px; }
+  #darivia .connector-list li { margin-bottom:12px; }
+  @media(max-width:800px) { #darivia .connection-options { grid-template-columns:1fr; } }
+  #darivia .exchange h3,#darivia .data-columns h3 { color:var(--blue); margin-bottom:18px; }
+  #darivia .pilot { display:grid; grid-template-columns:1.1fr .9fr; gap:6%; align-items:start; }
+  #darivia .pilot h2 { margin-bottom:30px; }
+  #darivia .pilot img { aspect-ratio:3/2; object-fit:cover; }
+  #darivia .data-columns { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4%; margin:48px 0; }
+  #darivia :is(.pilot,.data-columns,.split)>* { min-width:0; }
+  #darivia :is(.accent,.value,.domains span) { background:var(--pale); border-left:4px solid var(--blue); border-radius:0; }
+  #darivia .accent { padding:24px 28px; }
+  #darivia .statement { margin-top:32px; color:var(--blue); font-size:clamp(23px,2.5vw,36px); line-height:1.3; }
+  #darivia .three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; margin-top:48px; }
+  #darivia .value { padding:24px 28px; }
+  #darivia .audience { color:var(--blue); margin-bottom:22px; font-size:clamp(18px,1.75vw,25px); }
+  #darivia .value h3 { margin-bottom:24px; }
+  #darivia .value p { font-size:clamp(17px,1.375vw,20px); line-height:1.45; }
+  #darivia .diagram { margin-top:40px; }
+  #darivia .diagram svg { display:block; width:100%; height:auto; }
+  #darivia .diagram-hint { display:none; }
+  #darivia .diagram-summary { margin-top:32px; max-width:1150px; }
+  #darivia .expert-example { display:grid; grid-template-columns:.85fr 1.1fr 1.15fr; gap:4%; margin-top:44px; }
+  #darivia .expert-example > div { min-width:0; }
+  #darivia .expert-example .customer-context { color:var(--blue); }
+  #darivia .expert-example h3 { color:var(--blue); margin-bottom:24px; }
+  #darivia .expert-example blockquote { margin:0; }
+  #darivia .example-result { color:var(--blue); margin-top:32px; font-size:clamp(23px,2.5vw,36px); }
+  #darivia .example-note { font-size:16px; color:var(--muted); margin-top:20px; }
+  #darivia .method { display:grid; grid-template-columns:1.2fr 1fr; gap:5%; align-items:start; }
+  #darivia .method h2 { margin-bottom:32px; }
+  #darivia .method img { aspect-ratio:4/3; object-fit:cover; }
+  #darivia .research-top { max-width:1150px; }
+  #darivia .research-top .lead { font-size:clamp(25px,2.5vw,36px); line-height:1.3; color:var(--blue); margin:30px 0; }
+  #darivia .reports { display:grid; grid-template-columns:1fr 1fr; gap:6%; margin-top:50px; }
+  #darivia .report-col { display:flex; flex-direction:column; gap:42px; }
+  #darivia .report h3 { color:var(--blue); margin-bottom:16px; }
+  #darivia .report-button { text-align:left; }
+  #darivia .report-button .cta { margin-top:0; }
+  #darivia .domains { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:30px 0; }
+  #darivia .domains span { display:flex; align-items:center; justify-content:center; min-height:120px; padding:20px 10px; color:var(--blue); text-align:center; font-size:clamp(22px,2.5vw,36px); line-height:1.15; font-weight:500; }
+  #darivia .contact h2 { max-width:1050px; }
+  #darivia .contact p { max-width:960px; margin-top:30px; }
+  #darivia .contact-person { display:flex; align-items:center; gap:1em; margin-top:32px; }
+  #darivia .contact-person img { width:3.4em; height:3.4em; flex:0 0 3.4em; border-radius:50%; object-fit:cover; object-position:50% 38%; }
+  #darivia .contact-links { display:flex; flex-direction:column; gap:.6em; align-items:flex-start; min-width:0; }
+  #darivia .contact-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:7%; align-items:start; }
+  #darivia .contact-side { min-width:0; padding-top:48px; font-size:clamp(18px,1.5vw,22px); }
+  #darivia .contact-side .contact-person { margin-top:0; }
+  #darivia .contact-links a { overflow-wrap:anywhere; }
+  #darivia .contact-side .founder-bio { font-size:clamp(16px,1.35vw,19px); line-height:1.5; margin-top:26px; }
+  #darivia .footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0; color:var(--muted); font-size:16.5px; }
+  @media(min-width:561px) {
+    #darivia .eyebrow { font-size:14px; }
+    #darivia .hero-copy { padding-top:calc(clamp(65px,8vw,120px) - 40px); }
+    #darivia .accent.statement { margin-block:64px; }
+    #darivia .domains { margin-block:60px; }
+    #darivia .three { margin-top:96px; margin-bottom:clamp(64px,7vw,105px); }
+    #darivia .expert-example { margin-top:88px; margin-bottom:64px; }
+    #darivia { --body:max(16px,calc(clamp(18px,1.75vw,25px) - 4px)); }
+    #darivia :is(h1,h2) { font-size:calc(clamp(34px,4vw,58px) - 8px); }
+    #darivia h3 { font-size:calc(clamp(25px,2.5vw,36px) - 8px); }
+    #darivia .cta { font-size:max(16px,calc(clamp(18px,1.75vw,25px) - 4px)); }
+    #darivia .audience { font-size:14px; }
+    #darivia .value p { font-size:max(16px,calc(clamp(17px,1.375vw,20px) - 4px)); }
+    #darivia :is(.statement,.example-result) { font-size:calc(clamp(23px,2.5vw,36px) - 8px); }
+    #darivia .research-top .lead { font-size:calc(clamp(25px,2.5vw,36px) - 8px); }
+    #darivia .domains span { font-size:calc(clamp(22px,2.5vw,36px) - 8px); }
+    #darivia .example-note { font-size:14px; }
+    #darivia .contact-side .founder-bio { font-size:calc(clamp(16px,1.35vw,19px) - 2px); }
+  }
+  @media(max-width:800px) {
+    #darivia .hero-copy { width:70%; padding-top:90px; }
+    #darivia .hero::before { background-position:65% center; }
+    #darivia .hero::after { background:linear-gradient(90deg,rgba(250,250,248,.92),rgba(250,250,248,.7) 65%,rgba(250,250,248,.15)); }
+    #darivia .split,#darivia .three { grid-template-columns:1fr; gap:35px; }
+    #darivia .method { grid-template-columns:1fr; gap:32px; }
+    #darivia .pilot,#darivia .data-columns { grid-template-columns:1fr; gap:36px; }
+    #darivia .method img { max-width:700px; }
+    #darivia :is(.value,.accent) { padding:24px; }
+    #darivia .expert-example,#darivia .contact-grid { grid-template-columns:1fr; gap:36px; }
+    #darivia .contact-side { padding-top:0; }
+  }
+  @media(min-width:561px) and (max-width:800px) {
+    #darivia .hero-copy { padding-top:50px; }
+  }
+  @media(max-width:560px) {
+    #darivia .hero-copy { width:100%; padding-top:75px; }
+    #darivia .hero::before { opacity:.45; background-position:67% center; }
+    #darivia .hero::after { background:rgba(250,250,248,.5); }
+    #darivia .reports { display:flex; flex-direction:column; gap:40px; }
+    #darivia .diagram { overflow-x:auto; }
+    #darivia .diagram svg { min-width:750px; }
+    #darivia .diagram-hint { display:block; color:var(--muted); font-size:15px; margin-top:14px; }
+    #darivia .footer { flex-direction:column; gap:10px; }
+    #darivia .domains span { padding:16px 4px; font-size:20px; }
+  }
+
+[hidden] { display:none!important; }
+#analytics-consent { position:fixed; z-index:1000; bottom:16px; right:16px; left:16px; max-width:640px; max-height:calc(100dvh - 32px); overflow-y:auto; margin-left:auto; padding:22px 24px; border:1px solid #D4DDE4; border-left:4px solid #1769AA; background:#FAFAF8; box-shadow:0 3px 20px #17212C1A; color:#17212C; font:14px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif; box-sizing:border-box; }
+#analytics-consent p { margin:0; }
+#analytics-consent .consent-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
+#analytics-consent button { flex:1; min-width:150px; padding:10px 16px; border:1px solid #1769AA; background:#E5EEF5; color:#1769AA; font:inherit; cursor:pointer; }
+#analytics-consent button:hover { background:#D4E4F0; }
+#analytics-consent button:focus-visible { outline:3px solid #1769AA; outline-offset:3px; }
+@media(max-width:560px) { #analytics-consent { bottom:10px; right:10px; left:10px; padding:16px; } #analytics-consent .consent-actions { gap:8px; } #analytics-consent button { min-width:120px; padding:10px 8px; } }
