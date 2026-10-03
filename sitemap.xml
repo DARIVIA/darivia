@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://darivia.com/</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://darivia.com/</loc></url>
+  <url><loc>https://darivia.com/personal-product-advisor/</loc></url>
+  <url><loc>https://darivia.com/personal-product-advisor/privacy/</loc></url>
+  <url><loc>https://darivia.com/personal-product-advisor/terms/</loc></url>
+  <url><loc>https://darivia.com/personal-product-advisor/support/</loc></url>
+</urlset>
