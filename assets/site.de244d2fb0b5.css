@@ -92,7 +92,7 @@ html,body{margin:0;padding:0;background:#FAFAF8}html{color-scheme:light}a{text-u
   #darivia .contact-side .contact-person { margin-top:0; }
   #darivia .contact-links a { overflow-wrap:anywhere; }
   #darivia .contact-side .founder-bio { font-size:clamp(16px,1.35vw,19px); line-height:1.5; margin-top:26px; }
-  #darivia .footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0; color:var(--muted); font-size:16.5px; }
+
   @media(min-width:561px) {
     #darivia .eyebrow { font-size:14px; }
     #darivia .hero-copy { padding-top:calc(clamp(65px,8vw,120px) - 40px); }
@@ -147,3 +147,6 @@ html,body{margin:0;padding:0;background:#FAFAF8}html{color-scheme:light}a{text-u
 #analytics-consent button:hover { background:#D4E4F0; }
 #analytics-consent button:focus-visible { outline:3px solid #1769AA; outline-offset:3px; }
 @media(max-width:560px) { #analytics-consent { bottom:10px; right:10px; left:10px; padding:16px; } #analytics-consent .consent-actions { gap:8px; } #analytics-consent button { min-width:120px; padding:10px 8px; } }
+
+#darivia .footer { display:flex; justify-content:space-between; gap:20px; padding:28px 0; color:var(--muted); font-size:16.5px; }
+#darivia .footer span:last-child { font-size:14px; }
